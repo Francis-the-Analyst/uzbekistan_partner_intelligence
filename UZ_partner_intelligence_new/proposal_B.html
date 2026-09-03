@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uzbekistan · Partner Intelligence — Market Command Center (Proposal B)</title>
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="proposal_B.css">
+</head>
+<body class="theme-b">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header class="app-header">
+  <div class="brand-block">
+    <a class="brand-wordmark" href="https://www.cosentino.com/" target="_blank" rel="noopener">COSENTINO</a>
+    <span id="brand-authorship"></span>
+  </div>
+  <div class="header-actions">
+    <div class="channel-toggle" role="group" aria-label="Channels">
+      <button type="button" id="channel-btn-retail" class="header-btn" data-i18n="channel_retail" aria-pressed="true"></button>
+      <button type="button" id="channel-btn-proyectos" class="header-btn" data-i18n="channel_proyectos" aria-pressed="false"></button>
+    </div>
+    <a id="switch-proposal-link" class="header-btn" data-i18n="switch_proposal" href="proposal_A.html"></a>
+    <a id="back-to-cover-link" class="header-btn" data-i18n="back_to_cover" href="index_R_P.html"></a>
+    <button type="button" id="lang-toggle" class="header-btn" aria-label="Toggle language">RU</button>
+  </div>
+</header>
+
+<main id="main-content">
+  <!-- Command-center composition: live indicators surface before navigation -->
+  <section id="kpi-band" class="kpi-band" aria-label="Key indicators"></section>
+
+  <nav id="nav-band" class="nav-band" aria-label="Intelligence views"></nav>
+
+  <section class="filters-bar" aria-label="Filters">
+    <div class="filters-search-row">
+      <input type="search" id="filters-search" data-i18n-placeholder="filters_search" placeholder="Search…">
+      <button type="button" id="filters-mobile-toggle" class="header-btn" data-i18n="filters_open_mobile"></button>
+    </div>
+    <div id="filters-drawer">
+      <button type="button" id="filters-mobile-close" class="header-btn" data-i18n="filters_close_mobile"></button>
+      <div id="filters-chips"></div>
+      <button type="button" id="filters-reset" data-i18n="filters_reset"></button>
+    </div>
+  </section>
+
+  <div class="toolbar-row">
+    <span id="results-count"></span>
+    <button type="button" id="export-btn" data-i18n="export_csv"></button>
+  </div>
+
+  <section id="view-map" class="view-section" aria-label="Positioning map">
+    <div class="map-legend">
+      <span id="map-axis-y"></span>
+      <span id="map-axis-x"></span>
+    </div>
+    <div id="map-svg-wrap"></div>
+    <p id="map-note"></p>
+  </section>
+
+  <section id="view-list" class="view-section" hidden aria-label="Account list">
+    <div id="table-container" class="table-scroll"></div>
+  </section>
+
+  <section id="view-shortlist" class="view-section" hidden aria-label="Priority shortlist">
+    <div id="shortlist-container"></div>
+  </section>
+
+  <section id="view-coverage" class="view-section" hidden aria-label="Coverage">
+    <div id="coverage-container"></div>
+  </section>
+
+  <section id="view-competitive" class="view-section" hidden aria-label="Competitive landscape">
+    <div id="competitive-container"></div>
+  </section>
+
+  <section id="view-developments" class="view-section" hidden aria-label="Project developments">
+    <div id="dev-filters" class="filters-bar" style="padding:0 0 12px;"></div>
+    <div id="dev-table-container" class="table-scroll"></div>
+  </section>
+</main>
+
+<div id="drawer-overlay" hidden></div>
+<aside id="drawer" aria-hidden="true" aria-label="Account detail">
+  <div class="drawer-header">
+    <strong data-i18n="drawer_title">Detail</strong>
+    <button type="button" id="drawer-close-btn" data-i18n="drawer_close" class="header-btn"></button>
+  </div>
+  <div id="drawer-body"></div>
+</aside>
+
+<script src="data.js"></script>
+<script src="app-core.js"></script>
+<script>
+  AppCore.mount({ proposal: 'B' });
+</script>
+</body>
+</html>

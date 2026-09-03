@@ -1,0 +1,53 @@
+/*!
+ * proposal_A.css — Executive Intelligence
+ * Mineral white, carbon black, stone greys, one controlled accent (majolica green).
+ * Editorial/grotesque type, large scale, strict alignment, thin borders, minimal radii.
+ */
+:root {
+  --bg: #F6F3EC;
+  --bg-header: rgba(246,243,236,.92);
+  --bg-panel: #FFFFFF;
+  --bg-hover: rgba(24,17,13,.03);
+  --ink: #18110D;
+  --ink-soft: #675C53;
+  --line: rgba(24,17,13,.14);
+  --accent: #0E7C74;
+  --accent-strong: #0A5E58;
+  --accent-ink: #FFFFFF;
+  --focus-ring: #0A5E58;
+
+  --font-serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: Consolas, 'SF Mono', 'Cascadia Mono', 'Courier New', monospace;
+
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --shadow: 0 1px 2px rgba(24,17,13,.05), 0 8px 24px rgba(24,17,13,.06);
+
+  --priority-high: #0E7C74;
+  --priority-medium: #B98A2E;
+  --priority-low: #9B9186;
+  --priority-high-bg: #E4F1EF; --priority-high-ink: #0A5E58;
+  --priority-medium-bg: #F6ECD8; --priority-medium-ink: #8A631C;
+  --priority-low-bg: #EDEAE4; --priority-low-ink: #675C53;
+  --exhib-yes-bg: #E4F1EF; --exhib-yes-ink: #0A5E58;
+  --exhib-no-bg: #F5E4E0; --exhib-no-ink: #9C4A32;
+  --exhib-nd-bg: #EDEAE4; --exhib-nd-ink: #675C53;
+}
+
+body.theme-a { background: var(--bg); }
+
+.cover-wrap.theme-a-cover { background: var(--bg); }
+.cover-wrap.theme-a-cover .cover-main {
+  background:
+    radial-gradient(1100px 560px at 18% -10%, rgba(14,124,116,.10), transparent 60%),
+    radial-gradient(900px 500px at 90% 110%, rgba(185,138,46,.08), transparent 60%);
+}
+
+/* Table wrap needs horizontal scroll on narrow screens */
+#table-container, #dev-table-container { overflow-x: auto; }
+
+.app-header { box-shadow: 0 1px 0 var(--line); }
+.brand-wordmark { color: var(--ink); }
+
+.nav-band { box-shadow: var(--shadow); }

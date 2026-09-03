@@ -1,0 +1,62 @@
+[
+  {
+    "project_name": "Crystal Avenue",
+    "developer": "UET Construction (EPC/co-developer) + AL-BINA (sales & marketing partner) + IMAN Holding (financing partner)",
+    "location": "District 1, New Tashkent",
+    "status": "Under construction / On sale (Phase 2 sales launched)",
+    "scale": "12 floors, 212 residential units, business-class positioning",
+    "estimated_timeline": "Sales launched 6 Dec 2025; Phase 2 sales opened shortly after; official on-site presentation held 29 Nov 2025",
+    "source": "https://www.gazeta.uz/ru/2025/12/01/crystal-avenue/ ; https://uetconstruction.com/ ; https://crystal-avenue.uz/en",
+    "notes": "The most advanced, best-documented residential development in New Tashkent found this pass. Positioned as \"the main avenue of the new capital\" / \"smart luxury\". Central sales office at ЖК U-Tower plus dedicated on-site sales office."
+  },
+  {
+    "project_name": "Ostona (formerly referenced as \"Astana district\")",
+    "developer": "BI Group (Kazakh developer, self-described #1 developer in Central Asia)",
+    "location": "New Tashkent (district within the 6,000 ha first-phase zone)",
+    "status": "Under construction (launched Nov 2025)",
+    "scale": "10.5 hectares (phase 1), 3,162 apartments planned, $200M total investment, 25,660 sqm construction area (phase 1 figure)",
+    "estimated_timeline": "Construction launch ceremony 15 Nov 2025; no public completion date found",
+    "source": "https://www.spot.uz/oz/2025/11/15/new-tashkent ; https://bi.group/en/news/bi-group-nachinaet-stroitelstvo-kvartala-astana-v-novom-tashkente",
+    "notes": "Second confirmed large-scale residential developer active in New Tashkent (after UET/Crystal Avenue). Majority shareholder/chairman: Oydin Rahimboyev. BI Group also active elsewhere in Tashkent via the NRG-BI joint brand (Maftun Makon, Flagman) - those other projects are NOT confirmed to be inside New Tashkent."
+  },
+  {
+    "project_name": "Sharq Bahori (Phase 1 and Phase 2)",
+    "developer": "Sharq Bahori (developer name matches project name; featured with its own logo in the New Tashkent Directorate's official site header, suggesting flagship/showcase status)",
+    "location": "New Tashkent, ~100m from a planned metro station",
+    "status": "On sale / pre-sale (per developer's own site)",
+    "scale": "Two phases; smart-home residential ('15-minute city' positioning)",
+    "estimated_timeline": "Not determinable - no explicit delivery date published",
+    "source": "https://sharqbahoriuylari.com/ ; https://newtashkent.uz/ru/about/about-district/information-about-district",
+    "notes": "Smart-home features: Zigbee protocol home automation, face-ID entry, license-plate recognition parking. Finishes mentioned: laminate parquet, ceramic finishes, German-standard windows/joinery, XPS insulation - a concrete, if modest-scale, materials-specification opportunity."
+  },
+  {
+    "project_name": "Alisher Navoi International Scientific Research Centre",
+    "developer": "New Tashkent Directorate (public project) — architect: Zaha Hadid Architects",
+    "location": "New Tashkent cultural quarter",
+    "status": "Design / early development",
+    "scale": "23,000-29,000 sqm (source figures vary): museum, 400-seat auditorium, research center, residential school for 200 students",
+    "estimated_timeline": "Not determinable",
+    "source": "https://www.zha.com/projects/architecture/alisher-navoi-international-scientific-research-centre",
+    "notes": "Flagship cultural/institutional building, not residential - relevant mainly as a landmark prescription opportunity (public interiors, facades) rather than a sample-apartment/show-flat opportunity."
+  },
+  {
+    "project_name": "New Uzbekistan University Pedagogical campus",
+    "developer": "New Tashkent Directorate (public/institutional)",
+    "location": "New Tashkent, first-phase zone",
+    "status": "Near completion — finishing works ('строительно-отделочные работы') underway on rectorate and faculty buildings as of mid-2026",
+    "scale": "Not determinable (campus-scale, multiple buildings)",
+    "estimated_timeline": "First residents/users could arrive as early as 2027 per Directorate advisor Saidazim Sharipov",
+    "source": "https://www.spot.uz/ru/2026/07/28/tashkent-new ; https://president.uz/ru/lists/view/9457",
+    "notes": "Institutional, not residential/commercial - included as a concrete confirmation of construction progress in the district (most-advanced public building found this pass)."
+  },
+  {
+    "project_name": "New Tashkent Olympic/FIFA U-20 Stadium",
+    "developer": "New Tashkent Directorate (public project)",
+    "location": "New Tashkent, first-phase zone",
+    "status": "Under construction — 65% complete at time of research",
+    "scale": "55,000-seat capacity, built for the 2027 FIFA U-20 World Cup (Uzbekistan/Azerbaijan)",
+    "estimated_timeline": "Construction began Nov 2025; targeted for completion ahead of the 2027 tournament",
+    "source": "https://www.spot.uz/ru/2026/07/28/tashkent-new",
+    "notes": "Infrastructure/sports project, not a materials-specification target for Cosentino directly, but a strong macro-level signal of construction pace and government investment commitment in the district."
+  }
+]

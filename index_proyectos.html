@@ -1,0 +1,1191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uzbekistan Retail & Projects — Internal Intelligence</title>
+<style>
+:root{
+  --stone-950:#f5ecdd; --stone-900:#e6dac2; --stone-700:#c7b89f; --stone-500:#a89c87; --stone-400:#786c58;
+  --stone-300:#4a3c28; --stone-200:#362b1c; --stone-150:#2b2216; --stone-100:#171109;
+  --paper:#241c14; --brand:#d97a48; --brand-dark:#b8602f; --brand-light:#f0a066; --brand-ink:#1a1108; --brand-wash:rgba(217,122,72,.22);
+  --seg-a:#5b9bec; --seg-b:#ff8f5c; --seg-c:#35d6a0; --seg-d:#d9a53c; --seg-e:#ea7aa8;
+  --q-p1:#4fbf4f; --q-educate:#e0a63c; --q-develop:#9b8ae8; --q-low:#8f7f65; --q-unsc:#6b5c44;
+  --line:#463823; --line-soft:#332921;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.5);
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -8px rgba(0,0,0,.55);
+  --shadow-lift:0 6px 16px rgba(0,0,0,.45), 0 24px 48px -14px rgba(0,0,0,.65);
+  --radius:12px; --radius-sm:8px;
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --font-display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --grain:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC44NSIgbnVtT2N0YXZlcz0iMiIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDEgIDAgMCAwIDAgMSAgMCAwIDAgMCAxICAwIDAgMCAwLjA0NSAwIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+Cg==");
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:var(--font); color:var(--stone-950);
+  background-color:var(--stone-100);
+  background-image:
+    radial-gradient(1100px 560px at 102% -10%, var(--brand-wash) 0%, transparent 55%),
+    radial-gradient(900px 520px at -8% 14%, rgba(138,131,119,.15) 0%, transparent 60%),
+    var(--grain);
+  background-repeat:no-repeat, no-repeat, repeat;
+  background-attachment:fixed, fixed, fixed;
+  -webkit-font-smoothing:antialiased; line-height:1.45;
+}
+::selection{background:var(--brand-wash)}
+a{color:var(--brand)}
+button{font-family:inherit}
+.hidden{display:none !important}
+.mono-num{font-variant-numeric:tabular-nums}
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible{outline:2px solid var(--brand); outline-offset:2px}
+::-webkit-scrollbar{width:11px; height:11px}
+::-webkit-scrollbar-track{background:var(--stone-100)}
+::-webkit-scrollbar-thumb{background:var(--stone-300); border-radius:20px; border:3px solid var(--stone-100)}
+::-webkit-scrollbar-thumb:hover{background:var(--stone-400)}
+
+/* ---------- top chrome ---------- */
+#topbar{
+  position:sticky; top:0; z-index:40; color:#fff;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0) 45%),
+    linear-gradient(115deg, #0f0b07 0%, #170f08 65%, #1c130a 100%);
+  padding:15px 22px 13px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+  box-shadow:0 1px 0 rgba(0,0,0,.5);
+}
+#topbar::after{
+  content:''; position:absolute; left:0; right:0; bottom:0; height:4px;
+  background:linear-gradient(90deg, #4a4438 0%, #4a4438 33%, var(--brand) 33%, var(--brand-light) 66%, #cbb89a 66%, #cbb89a 100%);
+}
+#topbar .brand-eyebrow{font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--brand-light); margin:0 0 3px; font-weight:700}
+#topbar h1{font-family:var(--font-display); font-size:19px; font-weight:600; margin:0; letter-spacing:-.005em}
+#topbar .pagesubtitle{font-size:11.5px; color:var(--stone-300); margin:5px 0 0; max-width:560px}
+#topbar .modebadge{
+  font-size:10px; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:20px;
+  border:1px solid rgba(245,242,238,.25); color:var(--stone-300); margin-left:10px;
+}
+#langtoggle{display:flex; gap:2px; background:rgba(245,242,238,.1); border-radius:8px; padding:2px}
+#langtoggle button{
+  border:none; background:transparent; color:var(--stone-300); padding:6px 12px; border-radius:6px;
+  font-size:12.5px; font-weight:700; cursor:pointer; letter-spacing:.02em;
+}
+#langtoggle button.active{background:var(--brand); color:#fff}
+
+/* ---------- KPI strip ---------- */
+#kpistrip{display:flex; gap:14px; flex-wrap:wrap; padding:18px 22px 4px; max-width:1360px; margin:0 auto}
+.kpi{
+  flex:1 1 160px; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px 15px 20px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden;
+}
+.kpi::before{content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--brand)}
+.kpi:nth-child(2)::before{background:var(--seg-c)}
+.kpi:nth-child(3)::before{background:var(--q-p1)}
+.kpi:nth-child(4)::before{background:var(--seg-a)}
+.kpi .label{font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--stone-500); margin:0 0 6px; font-weight:600}
+.kpi .value{font-family:var(--font-display); font-size:27px; font-weight:600; letter-spacing:-.01em}
+
+/* ---------- filter bar ---------- */
+#filterbar{
+  position:sticky; top:var(--topbar-h,62px); z-index:30; background:var(--stone-150);
+  border-bottom:1px solid var(--line); border-top:1px solid var(--line-soft);
+  padding:13px 22px; display:flex; gap:16px; flex-wrap:wrap; align-items:flex-end;
+}
+#filterbar .fgroup{display:flex; flex-direction:column; gap:4px}
+#filterbar label{font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--stone-500); font-weight:700}
+#filterbar select,#filterbar input[type=number]{
+  font-family:inherit; font-size:12.5px; padding:7px 26px 7px 10px; border:1px solid var(--stone-300);
+  border-radius:var(--radius-sm); background-color:var(--paper); color:var(--stone-950); min-width:120px;
+  appearance:none; -webkit-appearance:none; transition:border-color .12s, box-shadow .12s;
+}
+#filterbar select{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M0 0L5 6L10 0Z' fill='%23a89c87'/></svg>");
+  background-repeat:no-repeat; background-position:right 10px center; background-size:9px 6px;
+}
+#filterbar input[type=number]{padding:7px 8px; min-width:0}
+#filterbar select:hover,#filterbar input[type=number]:hover{border-color:var(--stone-400)}
+#filterbar select:focus,#filterbar input[type=number]:focus{outline:none; border-color:var(--brand); box-shadow:0 0 0 3px var(--brand-wash)}
+#filterbar .range-inputs{display:flex; gap:5px; align-items:center; font-size:12px; color:var(--stone-500)}
+#filterbar .range-inputs input{width:46px; min-width:46px; text-align:center}
+#resetfilters{
+  font-size:12px; font-weight:700; color:var(--brand); background:none; border:none; cursor:pointer;
+  padding:8px 6px; align-self:flex-end;
+}
+#resetfilters:hover{text-decoration:underline}
+#filtercount{font-size:11.5px; color:var(--stone-500); align-self:flex-end; padding-bottom:8px; white-space:nowrap}
+#exportcsv{
+  margin-left:auto; align-self:flex-end; display:inline-flex; align-items:center; gap:8px;
+  background:var(--brand); color:#fff; border:none; padding:9px 16px; border-radius:var(--radius-sm);
+  font-size:12.8px; font-weight:700; letter-spacing:.01em; cursor:pointer; white-space:nowrap;
+  box-shadow:0 6px 16px -6px rgba(156,74,46,.6); transition:background .15s, transform .15s;
+}
+#exportcsv:hover{background:var(--brand-dark); transform:translateY(-1px)}
+#exportcsv::before{content:'\2193'; font-weight:800}
+
+/* ---------- tabs ---------- */
+#tabs{display:flex; gap:4px; padding:0 22px; background:var(--paper); border-bottom:1px solid var(--line); overflow-x:auto}
+#tabs button{
+  border:none; background:none; padding:13px 16px; font-size:13px; font-weight:600; color:var(--stone-500);
+  cursor:pointer; border-bottom:2px solid transparent; white-space:nowrap; transition:color .12s;
+}
+#tabs button:hover{color:var(--stone-700)}
+#tabs button.active{color:var(--stone-950); border-bottom-color:var(--brand); font-weight:700}
+
+/* ---------- content ---------- */
+#content{padding:26px 22px 64px; max-width:1360px; margin:0 auto}
+.panel{display:none}
+.panel.active{display:block; animation:fadeIn .18s ease}
+@keyframes fadeIn{from{opacity:0; transform:translateY(3px)} to{opacity:1; transform:none}}
+.section-head{margin:0 0 18px}
+.section-head h2{font-family:var(--font-display); font-size:21px; font-weight:600; margin:0 0 5px; letter-spacing:-.005em}
+.section-head p{font-size:13px; color:var(--stone-700); margin:0; max-width:760px}
+
+/* ---------- cards / grid ---------- */
+.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+.grid-2{display:grid; grid-template-columns:minmax(0,2.1fr) minmax(280px,1fr); gap:18px; align-items:start}
+@media (max-width:900px){.grid-2{grid-template-columns:1fr}}
+
+/* ---------- scatter map ---------- */
+#mapcard{padding:20px}
+#mapsvgwrap{position:relative}
+svg#scatter{width:100%; height:auto; display:block}
+.axis-label{font-size:11px; fill:var(--stone-500); letter-spacing:.03em}
+.quad-label{font-size:10.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase}
+.gridline{stroke:var(--stone-200); stroke-width:1}
+.axisline{stroke:var(--stone-300); stroke-width:1}
+.dot{cursor:pointer; stroke:#fff; stroke-width:2}
+.dot:hover, .dot.hovered{filter:brightness(0.85)}
+.hit{fill:transparent; cursor:pointer}
+#tooltip{
+  position:absolute; pointer-events:none; background:#0f0b07; color:#fff; font-size:12px;
+  padding:10px 12px; border-radius:9px; max-width:240px; box-shadow:var(--shadow-lift); z-index:50; opacity:0;
+  transition:opacity .08s;
+}
+#tooltip.show{opacity:1}
+#tooltip .tt-name{font-family:var(--font-display); font-weight:600; font-size:13px; margin-bottom:4px}
+#tooltip .tt-row{color:var(--stone-300); font-size:11.3px}
+
+.legend{display:flex; flex-wrap:wrap; gap:10px 16px; margin-top:16px; padding-top:16px; border-top:1px solid var(--line)}
+.legend-item{display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--stone-700)}
+.legend-swatch{width:12px; height:12px; flex:none}
+
+.unscored-strip{margin-top:16px; padding-top:16px; border-top:1px dashed var(--stone-300)}
+.unscored-strip h4{font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--stone-500); margin:0 0 8px; font-weight:700}
+.chip-row{display:flex; flex-wrap:wrap; gap:6px}
+.chip{
+  font-size:11.5px; padding:5px 10px; border-radius:20px; background:var(--stone-150); color:var(--stone-700);
+  cursor:pointer; border:1px solid var(--stone-200); transition:background .12s, transform .12s;
+}
+.chip:hover{background:var(--stone-200); transform:translateY(-1px)}
+
+/* ---------- detail drawer ---------- */
+#drawer{
+  position:fixed; top:0; right:0; height:100%; width:min(440px,92vw); background:var(--paper);
+  box-shadow:-12px 0 36px rgba(0,0,0,.5); transform:translateX(100%); transition:transform .2s ease;
+  z-index:55; overflow-y:auto; padding:26px;
+}
+#drawer.open{transform:translateX(0)}
+#drawerbg{position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:54; opacity:0; pointer-events:none; transition:opacity .2s}
+#drawerbg.open{opacity:1; pointer-events:auto}
+#drawer .dclose{position:absolute; top:18px; right:18px; border:none; background:var(--stone-150); width:32px; height:32px; border-radius:50%; font-size:16px; cursor:pointer; color:var(--stone-700); transition:background .12s}
+#drawer .dclose:hover{background:var(--stone-200)}
+#drawer .dname{font-family:var(--font-display); font-size:20px; font-weight:600; margin:0 30px 4px 0; letter-spacing:-.005em}
+#drawer .dmeta{font-size:12.5px; color:var(--stone-500); margin-bottom:18px}
+#drawer .dsection{margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--line)}
+#drawer .dsection:last-child{border-bottom:none}
+#drawer .dlabel{font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--stone-500); margin:0 0 4px; font-weight:700}
+#drawer .dval{font-size:13.5px; color:var(--stone-950)}
+#drawer .dscorepair{display:flex; gap:10px}
+#drawer .dscorebox{flex:1; background:var(--stone-100); border:1px solid var(--line-soft); border-radius:var(--radius-sm); padding:11px}
+#drawer .dscorebox .num{font-family:var(--font-display); font-size:23px; font-weight:600}
+.badge{display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.03em; padding:4px 10px; border-radius:20px; color:#fff}
+
+/* ---------- city / segment views ---------- */
+.city-grid,.seg-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:16px}
+.city-card,.seg-card{padding:18px; cursor:pointer; transition:box-shadow .15s, transform .15s}
+.city-card:hover,.seg-card:hover{box-shadow:var(--shadow-lift); transform:translateY(-2px)}
+.city-card h3,.seg-card h3{font-family:var(--font-display); font-size:16px; margin:0 0 2px; font-weight:600}
+.city-card .n,.seg-card .n{font-family:var(--font-display); font-size:26px; font-weight:600; color:var(--brand)}
+.bar-row{display:flex; align-items:center; gap:8px; margin-top:7px; font-size:11.5px}
+.bar-row .barlabel{width:82px; flex:none; color:var(--stone-500); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.bar-track{flex:1; height:7px; background:var(--stone-150); border-radius:4px; overflow:hidden}
+.bar-fill{height:100%; border-radius:4px}
+
+/* ---------- projects pipeline ---------- */
+.pipeline-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:16px}
+.pipeline-card{padding:20px}
+.pipeline-card h3{font-family:var(--font-display); font-size:16.5px; font-weight:600; margin:0}
+.pipeline-card .dsection{border-bottom:1px solid var(--line)}
+
+/* ---------- competitive ---------- */
+.comp-table{width:100%; border-collapse:collapse; font-size:13px}
+.comp-table th{text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--stone-500); padding:10px 12px; border-bottom:1px solid var(--line); font-weight:700}
+.comp-table td{padding:10px 12px; border-bottom:1px solid var(--stone-150)}
+.comp-table tr:hover td{background:var(--stone-100)}
+
+/* ---------- action plan table ---------- */
+#actiontable-wrap{overflow-x:auto}
+table#actiontable{width:100%; border-collapse:collapse; font-size:12.8px; min-width:980px}
+table#actiontable th{
+  text-align:left; font-size:10.3px; text-transform:uppercase; letter-spacing:.04em; color:var(--stone-500);
+  padding:11px 12px; border-bottom:1px solid var(--line); cursor:pointer; white-space:nowrap; user-select:none;
+  position:sticky; top:0; background:var(--paper); font-weight:700;
+}
+table#actiontable th:hover{color:var(--stone-950)}
+table#actiontable th .arrow{font-size:9px; margin-left:2px; opacity:.5}
+table#actiontable td{padding:10px 12px; border-bottom:1px solid var(--stone-150); vertical-align:top}
+table#actiontable tr:hover td{background:var(--stone-100)}
+.actiontext{max-width:340px; font-size:12.3px; color:var(--stone-700)}
+.toolrow{display:flex; justify-content:flex-end; align-items:center; margin-bottom:12px; gap:10px; flex-wrap:wrap}
+#tablecount{font-size:12px; color:var(--stone-500)}
+
+/* ---------- footer ---------- */
+#pagefoot{padding:28px 22px 44px; max-width:1360px; margin:0 auto; font-size:11.5px; color:var(--stone-500); border-top:1px solid var(--line)}
+#pagefoot .confid{color:var(--brand); font-weight:700; margin-bottom:6px}
+
+@media (max-width:860px){
+  /* a multi-row filter bar must not stay pinned to the top while scrolling on a phone */
+  #filterbar{position:static; top:auto}
+}
+@media (max-width:640px){
+  #topbar{padding:13px 14px 12px} #filterbar{padding:12px 14px} #content{padding:18px 14px 50px}
+  #kpistrip{padding:14px 14px 2px}
+  .grid-2{gap:12px}
+  #filterbar .fgroup{width:100%}
+  #filterbar select{width:100%}
+  #filterbar select,#filterbar input[type=number],#resetfilters,#tabs button{min-height:40px}
+  #exportcsv{margin-left:0; width:100%; justify-content:center; min-height:44px}
+  #resetfilters,#filtercount{align-self:flex-start; padding-bottom:0}
+  #drawer{padding:22px 18px}
+  table#actiontable td, table#actiontable th{padding:10px 8px}
+}
+@media (hover:none) and (pointer:coarse){
+  .chip{padding:7px 12px}
+  #tabs button{padding:14px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .panel.active{animation:none}
+  *{transition-duration:.001ms !important; scroll-behavior:auto !important}
+}
+</style>
+</head>
+<body>
+
+<div id="tooltip"></div>
+
+<div id="drawerbg" onclick="closeDrawer()"></div>
+<aside id="drawer"></aside>
+
+<header id="topbar">
+  <div>
+    <p class="brand-eyebrow">Cosentino &middot; Dekton / Silestone / Sensa</p>
+    <h1 id="pagetitle"></h1>
+    <p class="pagesubtitle" data-i18n="page_subtitle"></p>
+  </div>
+  <div style="display:flex; align-items:center; gap:14px">
+    <span class="modebadge" id="modebadge"></span>
+    <div id="langtoggle">
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <button data-lang="ru" onclick="setLang('ru')">RU</button>
+    </div>
+  </div>
+</header>
+
+<div id="kpistrip">
+  <div class="kpi"><p class="label" data-i18n="kpi_total"></p><p class="value mono-num" id="kpi_total"></p></div>
+  <div class="kpi"><p class="label" data-i18n="kpi_showroom"></p><p class="value mono-num" id="kpi_showroom"></p></div>
+  <div class="kpi"><p class="label" data-i18n="kpi_priority1"></p><p class="value mono-num" id="kpi_priority1"></p></div>
+  <div class="kpi"><p class="label" data-i18n="kpi_cities"></p><p class="value mono-num" id="kpi_cities"></p></div>
+</div>
+
+<div id="filterbar">
+  <div class="fgroup"><label data-i18n="filter_city"></label>
+    <select id="f_city" onchange="onFilterChange()"></select></div>
+  <div class="fgroup"><label data-i18n="filter_typology"></label>
+    <select id="f_typology" onchange="onFilterChange()"></select></div>
+  <div class="fgroup"><label data-i18n="filter_segment"></label>
+    <select id="f_segment" onchange="onFilterChange()"></select></div>
+  <div class="fgroup"><label data-i18n="filter_quadrant"></label>
+    <select id="f_quadrant" onchange="onFilterChange()"></select></div>
+  <div class="fgroup"><label data-i18n="filter_brand"></label>
+    <select id="f_brand" onchange="onFilterChange()"></select></div>
+  <div class="fgroup"><label data-i18n="filter_x"></label>
+    <div class="range-inputs">
+      <input type="number" id="f_xmin" min="1" max="5" placeholder="1" onchange="onFilterChange()">–
+      <input type="number" id="f_xmax" min="1" max="5" placeholder="5" onchange="onFilterChange()">
+    </div></div>
+  <div class="fgroup"><label data-i18n="filter_y"></label>
+    <div class="range-inputs">
+      <input type="number" id="f_ymin" min="1" max="5" placeholder="1" onchange="onFilterChange()">–
+      <input type="number" id="f_ymax" min="1" max="5" placeholder="5" onchange="onFilterChange()">
+    </div></div>
+  <div class="fgroup"><label data-i18n="filter_completeness"></label>
+    <div class="range-inputs">
+      <input type="number" id="f_complete" min="0" max="100" step="10" placeholder="0" onchange="onFilterChange()">%
+    </div></div>
+  <button id="resetfilters" onclick="resetFilters()" data-i18n="filter_reset"></button>
+  <span id="filtercount"></span>
+  <button id="exportcsv" onclick="exportCSV()" data-i18n="action_export"></button>
+</div>
+
+<nav id="tabs">
+  <button data-tab="map" onclick="setTab('map')" data-i18n="tab_map"></button>
+  <button data-tab="segment" onclick="setTab('segment')" data-i18n="tab_segment"></button>
+  <button data-tab="pipeline" onclick="setTab('pipeline')" data-i18n="tab_pipeline"></button>
+  <button data-tab="action" onclick="setTab('action')" data-i18n="tab_action"></button>
+</nav>
+
+<main id="content">
+  <section class="panel" id="panel-map">
+    <div class="section-head"><h2 data-i18n="map_title"></h2><p data-i18n="map_subtitle"></p></div>
+    <div class="grid-2">
+      <div class="card" id="mapcard">
+        <div id="mapsvgwrap"></div>
+        <div class="legend" id="maplegend"></div>
+        <div class="unscored-strip">
+          <h4 data-i18n="unscored_title"></h4>
+          <p class="dval" style="font-size:12px;color:var(--stone-500);margin:0 0 8px" data-i18n="unscored_note"></p>
+          <div class="chip-row" id="unscoredchips"></div>
+        </div>
+      </div>
+      <div class="card" style="padding:16px">
+        <p class="dlabel" data-i18n="map_howtoread"></p>
+        <div id="quadrantlegend"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-segment">
+    <div class="section-head"><h2 data-i18n="segment_title"></h2><p data-i18n="segment_subtitle"></p></div>
+    <div class="seg-grid" id="seggrid"></div>
+  </section>
+
+  <section class="panel" id="panel-pipeline">
+    <div class="section-head"><h2 data-i18n="pipeline_title"></h2><p data-i18n="pipeline_subtitle"></p></div>
+    <div class="pipeline-grid" id="pipelinegrid"></div>
+  </section>
+
+  <section class="panel" id="panel-action">
+    <div class="section-head"><h2 data-i18n="action_title"></h2><p data-i18n="action_subtitle"></p></div>
+    <div class="toolrow">
+      <span id="tablecount"></span>
+    </div>
+    <div class="card" id="actiontable-wrap" style="padding:4px">
+      <table id="actiontable"><thead id="actionhead"></thead><tbody id="actionbody"></tbody></table>
+    </div>
+  </section>
+</main>
+
+<footer id="pagefoot">
+  
+  <p data-i18n="foot_note"></p>
+  <p style="margin-top:4px" id="foot_generated"></p>
+</footer>
+
+<script>
+const CONFIG = { mode: 'internal', defaultLang: 'en' };
+const GENERATED_DATE = '2026-08-22';
+
+const I18N = {
+en: {
+  pagetitle_internal: "New Tashkent — Projects Channel Intelligence",
+  pagetitle_partner: "New Tashkent — Projects Channel Intelligence",
+  modebadge_internal: "Projects channel", modebadge_partner: "Projects channel",
+  kpi_total: "Accounts in view", kpi_showroom: "Confirmed showrooms",
+  kpi_priority1: "Priority 1 accounts", kpi_cities: "Pipeline projects",
+  filter_city: "City", filter_typology: "Category", filter_segment: "Segment", filter_quadrant: "Quadrant",
+  filter_brand: "Competitor brand", filter_x: "Positioning (X)", filter_y: "Fit (Y)",
+  filter_completeness: "Min. data completeness", filter_reset: "Reset filters",
+  opt_all: "All",
+  page_subtitle: "Who develops, builds and designs New Tashkent (Yangi Toshkent) — developers, general contractors, masterplan/architecture bureaus and interior design studios tied to the district's show-flats — plus the developments themselves.",
+  tab_map: "Positioning map", tab_segment: "By actor type",
+  tab_pipeline: "Projects pipeline", tab_action: "Action plan",
+  pipeline_title: "New Tashkent — projects pipeline",
+  pipeline_subtitle: "The developments themselves (not the companies): what's approved, under construction, selling or showcased right now, and which developer/contractor/architect each is tied to. Synthesized from the underlying actor research — treat as a starting map, not an exhaustive registry.",
+  pl_status: "Status", pl_location: "Location", pl_scale: "Scale", pl_timeline: "Timeline",
+  pl_developer: "Developer", pl_contractor: "Contractor", pl_architect: "Architect / design",
+  pl_related: "Related accounts in this dashboard", pl_source: "Source note",
+  map_title: "Positioning map",
+  map_subtitle: "X = positioning of the point of sale. Y = fit with the Dekton / Silestone / Sensa value proposition. Point size = estimated potential. Shape + color = segment. Positions are jittered slightly around each integer score for readability — exact scores are in the account detail panel.",
+  map_howtoread: "How to read the quadrants",
+  axis_x: "Positioning →", axis_y: "Fit →",
+  unscored_title: "Not scored — insufficient data",
+  unscored_note: "These accounts do not have enough confirmed data (price, exhibition, service scope or materials) to place on either axis without guessing. Click a chip to open the account.",
+  city_title: "By city", city_subtitle: "Concentration of accounts and quadrant mix per city.",
+  segment_title: "By actor type", segment_subtitle: "Which brand-entry angle fits each actor type, and why.",
+  comp_title: "Competitive analysis", comp_subtitle: "Surface-material brands already present in the market, and where the real openings are.",
+  comp_th_brand: "Brand / material", comp_th_tier: "Relation to Cosentino", comp_th_accounts: "Accounts", comp_th_cities: "Cities",
+  tier_direct: "Direct competitor", tier_adjacent: "Adjacent category", tier_other: "Other / unclassified", tier_cosentino_ref: "Cosentino already referenced",
+  action_title: "Action plan", action_subtitle: "Sortable, filterable list with the recommended next step per account. Click a column header to sort.",
+  action_export: "Download CSV",
+  action_th_name: "Account", action_th_city: "City", action_th_segment: "Segment",
+  action_th_quadrant: "Quadrant", action_th_step: "Suggested next step", action_th_contact: "Contact",
+  foot_note: "All figures shown come from the underlying research dataset (15 accounts tied to the New Tashkent project channel). Scores and justifications are anchored to real record fields; “insufficient data” means exactly that — nothing is estimated. The projects-pipeline tab is synthesized from these same actor records, not a separate scrape — treat it as a starting map. See the companion retail dashboard (index_retail.html) for the city point-of-sale channel.",
+  cover_logo_cosentino: "Cosentino logo", cover_logo_partner: "Distributor logo",
+  cover_title: "Uzbekistan Market Entry — Retail & Projects Dashboard",
+  cover_subtitle: "Prepared for the distribution partner and sales team — Dekton · Silestone · Sensa",
+  cover_confidential: "Confidential — for internal use by the partner's sales organization only. Not for external distribution.",
+  cover_cta: "Open dashboard",
+  d_city: "City", d_address: "Address", d_segment: "Segment", d_typology: "Typology", d_channel: "Channel",
+  d_brands: "Brands / materials mentioned", d_positioning: "Positioning (X)", d_fit: "Fit (Y)",
+  d_quadrant: "Quadrant", d_potential: "Estimated potential", d_action: "Suggested next step",
+  d_contact: "Contact", d_web: "Source / web", d_completeness: "Data completeness",
+  d_positioning_why: "Why this positioning score", d_fit_why: "Why this fit score",
+  show_yes: "Confirmed showroom — act now", show_uncertain: "Likely showroom — verify on-site",
+  show_no: "No confirmed showroom", show_notyet: "No showroom yet (early project phase)",
+  na: "—", insufficient: "Insufficient data",
+  quad_p1: "Priority 1 — Engage now", quad_educate: "Educate — technical argument needed",
+  quad_develop: "Develop — grow with them", quad_unscored: "Unscored — verify data",
+  quad_low_internal: "Low priority", quad_low_partner: "Low priority — monitor",
+},
+ru: {
+  pagetitle_internal: "New Tashkent — аналитика канала проектов",
+  pagetitle_partner: "New Tashkent — аналитика канала проектов",
+  modebadge_internal: "Канал: проекты", modebadge_partner: "Канал: проекты",
+  kpi_total: "Компаний в выборке", kpi_showroom: "Подтверждённые шоурумы",
+  kpi_priority1: "Приоритет 1", kpi_cities: "Проектов в реализации",
+  filter_city: "Город", filter_typology: "Категория", filter_segment: "Сегмент", filter_quadrant: "Квадрант",
+  filter_brand: "Бренд-конкурент", filter_x: "Позиционирование (X)", filter_y: "Соответствие (Y)",
+  filter_completeness: "Мин. полнота данных", filter_reset: "Сбросить фильтры",
+  opt_all: "Все",
+  page_subtitle: "Кто застраивает, строит и проектирует New Tashkent (Yangi Toshkent) — застройщики, генеральные подрядчики, бюро мастер-плана/архитектуры и студии интерьера для демонстрационных квартир района — плюс сами проекты.",
+  tab_map: "Карта позиционирования", tab_segment: "По типу актора",
+  tab_pipeline: "Проекты в реализации", tab_action: "План действий",
+  pipeline_title: "New Tashkent — проекты в реализации",
+  pipeline_subtitle: "Сами объекты (не компании): что утверждено, строится, продаётся или является витринным проектом прямо сейчас, и с каким застройщиком/подрядчиком/архитектором каждый связан. Собрано на основе исследования акторов — это отправная карта, а не исчерпывающий реестр.",
+  pl_status: "Статус", pl_location: "Локация", pl_scale: "Масштаб", pl_timeline: "Сроки",
+  pl_developer: "Застройщик", pl_contractor: "Подрядчик", pl_architect: "Архитектор / дизайн",
+  pl_related: "Связанные компании в этом дашборде", pl_source: "Источник",
+  map_title: "Карта позиционирования",
+  map_subtitle: "X — позиционирование точки продаж. Y — соответствие ценностному предложению Dekton / Silestone / Sensa. Размер точки — оценочный потенциал. Форма + цвет — сегмент. Позиции немного смещены вокруг целого балла для читаемости — точные значения в карточке компании.",
+  map_howtoread: "Как читать квадранты",
+  axis_x: "Позиционирование →", axis_y: "Соответствие →",
+  unscored_title: "Без оценки — недостаточно данных",
+  unscored_note: "У этих компаний недостаточно подтверждённых данных (цена, экспозиция, объём услуг или материалы), чтобы разместить их на осях без догадок. Нажмите на карточку, чтобы открыть компанию.",
+  city_title: "По городам", city_subtitle: "Концентрация компаний и распределение по квадрантам в каждом городе.",
+  segment_title: "По типу актора", segment_subtitle: "Какой угол входа по бренду подходит каждому типу актора и почему.",
+  comp_title: "Конкурентный анализ", comp_subtitle: "Бренды поверхностных материалов, уже присутствующие на рынке, и где есть реальные окна.",
+  comp_th_brand: "Бренд / материал", comp_th_tier: "Отношение к Cosentino", comp_th_accounts: "Компаний", comp_th_cities: "Города",
+  tier_direct: "Прямой конкурент", tier_adjacent: "Смежная категория", tier_other: "Другое / не классифицировано", tier_cosentino_ref: "Cosentino уже упоминается",
+  action_title: "План действий", action_subtitle: "Список с возможностью сортировки и фильтрации, с рекомендуемым следующим шагом по каждой компании. Нажмите на заголовок столбца для сортировки.",
+  action_export: "Скачать CSV",
+  action_th_name: "Компания", action_th_city: "Город", action_th_segment: "Сегмент",
+  action_th_quadrant: "Квадрант", action_th_step: "Рекомендуемый шаг", action_th_contact: "Контакт",
+  foot_note: "Все приведённые данные взяты из исходного исследовательского датасета (15 компаний, связанных с каналом проектов New Tashkent). Оценки и обоснования привязаны к реальным полям записей; «недостаточно данных» означает именно это — ничего не оценивается приблизительно. Вкладка «Проекты в реализации» собрана на основе тех же записей об акторах, а не отдельного сбора данных — это отправная карта. Розничный канал по городам — в отдельном дашборде (index_retail.html).",
+  cover_logo_cosentino: "Логотип Cosentino", cover_logo_partner: "Логотип дистрибьютора",
+  cover_title: "Выход на рынок Узбекистана — дашборд розницы и проектов",
+  cover_subtitle: "Подготовлено для партнёра-дистрибьютора и отдела продаж — Dekton · Silestone · Sensa",
+  cover_confidential: "Конфиденциально — только для внутреннего использования отделом продаж партнёра. Не для внешнего распространения.",
+  cover_cta: "Открыть дашборд",
+  d_city: "Город", d_address: "Адрес", d_segment: "Сегмент", d_typology: "Типология", d_channel: "Канал",
+  d_brands: "Упомянутые бренды / материалы", d_positioning: "Позиционирование (X)", d_fit: "Соответствие (Y)",
+  d_quadrant: "Квадрант", d_potential: "Оценочный потенциал", d_action: "Рекомендуемый шаг",
+  d_contact: "Контакт", d_web: "Источник / сайт", d_completeness: "Полнота данных",
+  d_positioning_why: "Почему такая оценка позиционирования", d_fit_why: "Почему такая оценка соответствия",
+  show_yes: "Подтверждённый шоурум — действовать сейчас", show_uncertain: "Вероятный шоурум — проверить на месте",
+  show_no: "Подтверждённого шоурума нет", show_notyet: "Шоурума пока нет (ранняя стадия проекта)",
+  na: "—", insufficient: "Недостаточно данных",
+  quad_p1: "Приоритет 1 — начать контакт", quad_educate: "Обучение — нужен технический аргумент",
+  quad_develop: "Развивать — расти вместе", quad_unscored: "Без оценки — проверить данные",
+  quad_low_internal: "Низкий приоритет", quad_low_partner: "Низкий приоритет — наблюдение",
+},
+};
+
+const DATA = [{"id":91,"name":"Cross Works Ltd","city_en":"Tashkent","city_ru":"Ташкент","address":"London, United Kingdom (project office linked to New Tashkent Directorate, Tashkent)","segment_en":"C. Boutique Interior Design & Architecture Studios","segment_ru":"C. Бутиковые студии дизайна интерьера и архитектурные бюро","typology_en":"Architecture Studio","typology_ru":"Архитектурное бюро","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":5,"y":3,"x_level_en":"High","x_level_ru":"Высокий","y_level_en":"Medium","y_level_ru":"Средний","x_justification_en":"[Positioning inferred from confirmed project role, not retail presence] Overall masterplanner and lead consultant for New Tashkent; authored the approved District 1 Detailed Masterplan; oversees the full consortium.","x_justification_ru":"[Позиционирование выведено из подтверждённой роли в проекте, не из розничного присутствия] Главный генпланировщик и ведущий консультант New Tashkent; автор утверждённого детального генплана Района 1; курирует весь консорциум.","y_justification_en":"Design-only scope, no material brand disclosed — value is specification influence at district scale, not existing material capacity.","y_justification_ru":"Только Design, бренд материала не раскрыт — ценность в прескриптивном влиянии на уровне района, а не в текущей материальной базе.","quadrant_en":"EDUCATE - technical argument needed","quadrant_ru":"ОБУЧЕНИЕ — нужен технический аргумент","potential_en":"High","potential_ru":"Высокий","potential_confirmed":true,"showroom_flag":"no","action_en":"Needs technical education first: Preferred technical-specification agreement, with technical support and client-facing samples for proposals.","action_ru":"Сначала нужна техническая аргументация: Соглашение о предпочтительной технической спецификации, с технической поддержкой и образцами для клиентских предложений.","email":null,"phone":null,"web":"https://en.wikipedia.org/wiki/New_Tashkent; https://cross-works.com/news/cross-works-new-tashkent-district-1-is-officially-approved; https://newtashkent.uz/ru/our-partners/partners","completeness":38,"priority_original":false},{"id":92,"name":"Buro Happold","city_en":"Tashkent","city_ru":"Ташкент","address":"International (project delivered remotely / via New Tashkent Directorate, Tashkent)","segment_en":"C. Boutique Interior Design & Architecture Studios","segment_ru":"C. Бутиковые студии дизайна интерьера и архитектурные бюро","typology_en":"Architecture Studio","typology_ru":"Архитектурное бюро","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":4,"y":2,"x_level_en":"High","x_level_ru":"Высокий","y_level_en":"Low","y_level_ru":"Низкий","x_justification_en":"[Role-based] Named consortium member engaged by Cross Works for infrastructure/sustainability/feasibility strategy.","x_justification_ru":"[На основе роли] Именной участник консорциума, привлечён Cross Works для стратегии инфраструктуры/устойчивого развития/технико-экономического обоснования.","y_justification_en":"Engineering/infrastructure role is further from finish-material specification than an architecture/landscape role; Design only, no material signal.","y_justification_ru":"Инженерно-инфраструктурная роль дальше от спецификации отделочных материалов, чем архитектурная/ландшафтная; только Design, без сигнала по материалам.","quadrant_en":"EDUCATE - technical argument needed","quadrant_ru":"ОБУЧЕНИЕ — нужен технический аргумент","potential_en":"Medium","potential_ru":"Средний","potential_confirmed":false,"showroom_flag":"no","action_en":"Needs technical education first: Preferred technical-specification agreement, with technical support and client-facing samples for proposals.","action_ru":"Сначала нужна техническая аргументация: Соглашение о предпочтительной технической спецификации, с технической поддержкой и образцами для клиентских предложений.","email":null,"phone":null,"web":"https://www.burohappold.com/projects/new-tashkent-masterplan/; https://newtashkent.uz/ru/our-partners/partners","completeness":38,"priority_original":false},{"id":93,"name":"Gillespies","city_en":"Tashkent","city_ru":"Ташкент","address":"United Kingdom (project office linked to New Tashkent Directorate, Tashkent)","segment_en":"C. Boutique Interior Design & Architecture Studios","segment_ru":"C. Бутиковые студии дизайна интерьера и архитектурные бюро","typology_en":"Architecture Studio","typology_ru":"Архитектурное бюро","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":4,"y":3,"x_level_en":"High","x_level_ru":"Высокий","y_level_en":"Medium","y_level_ru":"Средний","x_justification_en":"[Role-based] Named consortium member for landscape architecture — 420-hectare Central Park, green belt, public realm.","x_justification_ru":"[На основе роли] Именной участник консорциума по ландшафтной архитектуре — Центральный парк 420 га, зелёный пояс, общественные пространства.","y_justification_en":"Landscape/public-realm specification is genuinely adjacent to exterior cladding/paving surfaces, more material-relevant than a pure engineering role, though still Design only.","y_justification_ru":"Спецификация ландшафта/общественных пространств реально смежна с наружной облицовкой/мощением, более материально-релевантна, чем чисто инженерная роль, хотя всё ещё только Design.","quadrant_en":"EDUCATE - technical argument needed","quadrant_ru":"ОБУЧЕНИЕ — нужен технический аргумент","potential_en":"Medium","potential_ru":"Средний","potential_confirmed":false,"showroom_flag":"no","action_en":"Needs technical education first: Preferred technical-specification agreement, with technical support and client-facing samples for proposals.","action_ru":"Сначала нужна техническая аргументация: Соглашение о предпочтительной технической спецификации, с технической поддержкой и образцами для клиентских предложений.","email":null,"phone":null,"web":"https://www.gillespies.co.uk/; https://newtashkent.uz/ru/our-partners/partners; https://www.youtube.com/watch?v=C538LQhQU6Y","completeness":38,"priority_original":false},{"id":94,"name":"BuroAtlas","city_en":"Tashkent","city_ru":"Ташкент","address":null,"segment_en":"C. Boutique Interior Design & Architecture Studios","segment_ru":"C. Бутиковые студии дизайна интерьера и архитектурные бюро","typology_en":"Architecture Studio","typology_ru":"Архитектурное бюро","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":3,"y":2,"x_level_en":"Medium","x_level_ru":"Средний","y_level_en":"Low","y_level_ru":"Низкий","x_justification_en":"[Role-based] Named partner, founder quoted by the Directorate, but 'specific deliverable(s) within New Tashkent not itemized in sources found'.","x_justification_ru":"[На основе роли] Именной партнёр, основатель процитирован Дирекцией, но «конкретные результаты в рамках New Tashkent не детализированы в найденных источниках».","y_justification_en":"Design only, no material signal, generic urban-design role.","y_justification_ru":"Только Design, нет сигнала по материалам, общая роль в градостроительстве.","quadrant_en":"LOW PRIORITY","quadrant_ru":"НИЗКИЙ ПРИОРИТЕТ","potential_en":"Medium","potential_ru":"Средний","potential_confirmed":false,"showroom_flag":"no","action_en":"Lower priority - monitor: Preferred technical-specification agreement, with technical support and client-facing samples for proposals.","action_ru":"Низкий приоритет — наблюдение: Соглашение о предпочтительной технической спецификации, с технической поддержкой и образцами для клиентских предложений.","email":null,"phone":null,"web":"https://www.buroatlas.pro/; https://newtashkent.uz/ru/our-partners/partners","completeness":25,"priority_original":false},{"id":95,"name":"Meinhardt Group","city_en":"Tashkent","city_ru":"Ташкент","address":"Singapore (regional engagement via New Tashkent Directorate, Tashkent)","segment_en":"C. Boutique Interior Design & Architecture Studios","segment_ru":"C. Бутиковые студии дизайна интерьера и архитектурные бюро","typology_en":"Architecture Studio","typology_ru":"Архитектурное бюро","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":5,"y":3,"x_level_en":"High","x_level_ru":"Высокий","y_level_en":"Medium","y_level_ru":"Средний","x_justification_en":"[Role-based] ~$1B agreement to design the Phase 1 masterplan + joint design/engineering center; ~5,000 employees, 510+ global projects.","x_justification_ru":"[На основе роли] Соглашение на ~$1 млрд на проектирование генплана Фазы 1 + совместный центр проектирования/инжиниринга; ~5000 сотрудников, 510+ проектов по всему миру.","y_justification_en":"Masterplan/engineering-level role, Design only, no finishing standard disclosed.","y_justification_ru":"Роль на уровне генплана/инжиниринга, только Design, стандарт отделки не раскрыт.","quadrant_en":"EDUCATE - technical argument needed","quadrant_ru":"ОБУЧЕНИЕ — нужен технический аргумент","potential_en":"High","potential_ru":"Высокий","potential_confirmed":true,"showroom_flag":"no","action_en":"Needs technical education first: Preferred technical-specification agreement, with technical support and client-facing samples for proposals.","action_ru":"Сначала нужна техническая аргументация: Соглашение о предпочтительной технической спецификации, с технической поддержкой и образцами для клиентских предложений.","email":null,"phone":null,"web":"https://www.gazeta.uz/ru/2023/01/19/new-tashkent/; https://newtashkent.uz/ru/our-partners/partners","completeness":38,"priority_original":false},{"id":96,"name":"Zaha Hadid Architects","city_en":"Tashkent","city_ru":"Ташкент","address":"London, United Kingdom","segment_en":"C. Boutique Interior Design & Architecture Studios","segment_ru":"C. Бутиковые студии дизайна интерьера и архитектурные бюро","typology_en":"Architecture Studio","typology_ru":"Архитектурное бюро","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":"Sculptural brickwork facade (per project description)","brand_tier":"other","x":5,"y":4,"x_level_en":"High","x_level_ru":"Высокий","y_level_en":"High","y_level_ru":"Высокий","x_justification_en":"[Role-based] Designing the Alisher Navoi cultural quarter anchor building (23,000-29,000 sqm), a named landmark within the masterplan.","x_justification_ru":"[На основе роли] Проектирует якорное здание культурного квартала им. Алишера Навои (23 000-29 000 кв. м) — знаковый объект в составе генплана.","y_justification_en":"The only New Tashkent consortium record with a disclosed facade material ('sculptural brickwork facade') — a concrete opening to propose Dekton as an exterior-cladding alternative.","y_justification_ru":"Единственная запись консорциума New Tashkent с раскрытым материалом фасада («скульптурная кирпичная облицовка») — конкретная возможность предложить Dekton как альтернативу для наружной облицовки.","quadrant_en":"PRIORITY 1 - Engage now","quadrant_ru":"ПРИОРИТЕТ 1 — начать контакт","potential_en":"High","potential_ru":"Высокий","potential_confirmed":true,"showroom_flag":"no","action_en":"Engage now: Preferred technical-specification agreement, with technical support and client-facing samples for proposals.","action_ru":"Начать контакт сейчас: Соглашение о предпочтительной технической спецификации, с технической поддержкой и образцами для клиентских предложений.","email":null,"phone":null,"web":"https://www.zha.com/projects/architecture/alisher-navoi-international-scientific-research-centre; https://newtashkent.uz/ru/our-partners/partners","completeness":50,"priority_original":false},{"id":97,"name":"Dome+Partners","city_en":"Tashkent","city_ru":"Ташкент","address":"Istanbul, Turkey (offices also in Uzbekistan and Kazakhstan)","segment_en":"C. Boutique Interior Design & Architecture Studios","segment_ru":"C. Бутиковые студии дизайна интерьера и архитектурные бюро","typology_en":"Architecture Studio","typology_ru":"Архитектурное бюро","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":3,"y":2,"x_level_en":"Medium","x_level_ru":"Средний","y_level_en":"Low","y_level_ru":"Низкий","x_justification_en":"[Role-based] Officially listed Directorate partner with a real track record (80,000 sqm prior project), but 'specific building assignment... not publicly confirmed' for New Tashkent.","x_justification_ru":"[На основе роли] Официально указан как партнёр Дирекции с реальным опытом (80 000 кв. м предыдущий проект), но «конкретное здание в New Tashkent... публично не подтверждено».","y_justification_en":"Design only, no material signal.","y_justification_ru":"Только Design, нет сигнала по материалам.","quadrant_en":"LOW PRIORITY","quadrant_ru":"НИЗКИЙ ПРИОРИТЕТ","potential_en":"Medium","potential_ru":"Средний","potential_confirmed":false,"showroom_flag":"no","action_en":"Lower priority - monitor: Preferred technical-specification agreement, with technical support and client-facing samples for proposals.","action_ru":"Низкий приоритет — наблюдение: Соглашение о предпочтительной технической спецификации, с технической поддержкой и образцами для клиентских предложений.","email":null,"phone":null,"web":"https://newtashkent.uz/ru/our-partners/partners; https://dome.ws/; https://www.instagram.com/p/ChJxh4-tZxg/","completeness":38,"priority_original":false},{"id":98,"name":"Kentsel Strateji (Ali Faruk Göksü)","city_en":"Tashkent","city_ru":"Ташкент","address":"Turkey","segment_en":"C. Boutique Interior Design & Architecture Studios","segment_ru":"C. Бутиковые студии дизайна интерьера и архитектурные бюро","typology_en":"Architecture Studio","typology_ru":"Архитектурное бюро","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":2,"y":1,"x_level_en":"Low","x_level_ru":"Низкий","y_level_en":"Low","y_level_ru":"Низкий","x_justification_en":"[Role-based] Urban-strategy partner, founder quoted, but 'specific deliverable(s)... not itemized' — weakest scope evidence of the consortium.","x_justification_ru":"[На основе роли] Партнёр по городской стратегии, основатель процитирован, но «конкретные результаты... не детализированы» — самое слабое доказательство объёма работ в консорциуме.","y_justification_en":"Pure strategy consultancy with no design/material touchpoint at all.","y_justification_ru":"Чисто стратегический консалтинг без какой-либо связи с дизайном/материалами.","quadrant_en":"LOW PRIORITY","quadrant_ru":"НИЗКИЙ ПРИОРИТЕТ","potential_en":"Medium","potential_ru":"Средний","potential_confirmed":false,"showroom_flag":"no","action_en":"Lower priority - monitor: Preferred technical-specification agreement, with technical support and client-facing samples for proposals.","action_ru":"Низкий приоритет — наблюдение: Соглашение о предпочтительной технической спецификации, с технической поддержкой и образцами для клиентских предложений.","email":null,"phone":null,"web":"https://newtashkent.uz/ru/our-partners/partners; https://kentselstrateji.com/en/projects/","completeness":38,"priority_original":false},{"id":99,"name":"GAD Architecture","city_en":"Tashkent","city_ru":"Ташкент","address":"Istanbul, Turkey","segment_en":"C. Boutique Interior Design & Architecture Studios","segment_ru":"C. Бутиковые студии дизайна интерьера и архитектурные бюро","typology_en":"Architecture Studio","typology_ru":"Архитектурное бюро","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":2,"y":2,"x_level_en":"Low","x_level_ru":"Низкий","y_level_en":"Low","y_level_ru":"Низкий","x_justification_en":"[Role-based] Authored an alternate masterplan vision explicitly 'not confirmed as the officially adopted plan' and 'not listed among the official newtashkent.uz partners'.","x_justification_ru":"[На основе роли] Автор альтернативного видения генплана, явно «не подтверждённого как официально принятый план» и «не включённого в официальный список партнёров newtashkent.uz».","y_justification_en":"Design only, vision-stage document, no material signal.","y_justification_ru":"Только Design, документ на стадии концепции, нет сигнала по материалам.","quadrant_en":"LOW PRIORITY","quadrant_ru":"НИЗКИЙ ПРИОРИТЕТ","potential_en":"Medium","potential_ru":"Средний","potential_confirmed":false,"showroom_flag":"no","action_en":"Lower priority - monitor: Preferred technical-specification agreement, with technical support and client-facing samples for proposals.","action_ru":"Низкий приоритет — наблюдение: Соглашение о предпочтительной технической спецификации, с технической поддержкой и образцами для клиентских предложений.","email":null,"phone":null,"web":"https://archello.com/project/new-tashkent-city; https://archello.com/brand/gad-architecture","completeness":38,"priority_original":false},{"id":100,"name":"Benoy","city_en":"Tashkent","city_ru":"Ташкент","address":"Dubai, UAE (regional office) / London, Nottinghamshire, Mumbai, Shanghai, Singapore","segment_en":"C. Boutique Interior Design & Architecture Studios","segment_ru":"C. Бутиковые студии дизайна интерьера и архитектурные бюро","typology_en":"Architecture Studio","typology_ru":"Архитектурное бюро","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":3,"y":2,"x_level_en":"Medium","x_level_ru":"Средний","y_level_en":"Low","y_level_ru":"Низкий","x_justification_en":"[Role-based] Early pre-concept masterplan approved at president/mayor level historically, but explicitly 'later superseded/complemented by Cross Works' — current relevance uncertain.","x_justification_ru":"[На основе роли] Ранний предконцептуальный генплан, исторически утверждённый на уровне президента/мэра, но явно «впоследствии заменённый/дополненный планом Cross Works» — текущая актуальность под вопросом.","y_justification_en":"Design only, pre-concept stage, no material signal.","y_justification_ru":"Только Design, стадия предконцепции, нет сигнала по материалам.","quadrant_en":"LOW PRIORITY","quadrant_ru":"НИЗКИЙ ПРИОРИТЕТ","potential_en":"High","potential_ru":"Высокий","potential_confirmed":true,"showroom_flag":"no","action_en":"Lower priority - monitor: Preferred technical-specification agreement, with technical support and client-facing samples for proposals.","action_ru":"Низкий приоритет — наблюдение: Соглашение о предпочтительной технической спецификации, с технической поддержкой и образцами для клиентских предложений.","email":"marketing@benoy.com","phone":null,"web":"https://www.benoy.com/projects/tashkent-new-city/","completeness":50,"priority_original":false},{"id":101,"name":"AL-BINA Development","city_en":"Tashkent","city_ru":"Ташкент","address":"Central sales office: ЖК U-Tower, Tashkent; project sales office: Crystal Avenue, New Tashkent","segment_en":"E. Developers & Project Ecosystem","segment_ru":"E. Застройщики и экосистема проектов","typology_en":"Developer","typology_ru":"Застройщик (девелопер)","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":5,"y":4,"x_level_en":"High","x_level_ru":"Высокий","y_level_en":"High","y_level_ru":"Высокий","x_justification_en":"Central sales office + dedicated Crystal Avenue project office; named partner IMAN Holding; explicit 'smart luxury' / flagship positioning, sales just launched.","x_justification_ru":"Центральный офис продаж + выделенный проектный офис Crystal Avenue; именной партнёр IMAN Holding; явное позиционирование «умная роскошь» / флагманский проект, продажи только запущены.","y_justification_en":"Design+Build+Develop scope on a flagship New Tashkent project, but no finishing standard is disclosed yet (unlike Sharq Bahori).","y_justification_ru":"Design+Build+Develop на флагманском проекте New Tashkent, но стандарт отделки пока не раскрыт (в отличие от Sharq Bahori).","quadrant_en":"PRIORITY 1 - Engage now","quadrant_ru":"ПРИОРИТЕТ 1 — начать контакт","potential_en":"High","potential_ru":"Высокий","potential_confirmed":true,"showroom_flag":"yes","action_en":"Engage now: Framework supply agreement for show-flats/model units, with an option to scale to full-phase supply if commercially well received. Free Dekton/Silestone/Sensa sample display in existing showroom.","action_ru":"Начать контакт сейчас: Рамочное соглашение о поставке для демонстрационных квартир/пилотных юнитов с опцией масштабирования на всю фазу при успешном коммерческом приёме. Бесплатное размещение образцов Dekton/Silestone/Sensa в существующем шоуруме.","email":null,"phone":"+998 71 205 10 68","web":"https://www.instagram.com/al_bina.uz/; https://www.gazeta.uz/ru/2025/12/01/crystal-avenue/; https://crystal-avenue.uz/","completeness":75,"priority_original":true},{"id":102,"name":"UET Construction","city_en":"Tashkent","city_ru":"Ташкент","address":"Crystal Avenue sales office, New Tashkent, Tashkent","segment_en":"E. Developers & Project Ecosystem","segment_ru":"E. Застройщики и экосистема проектов","typology_en":"Hybrid","typology_ru":"Гибрид","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":4,"y":4,"x_level_en":"High","x_level_ru":"Высокий","y_level_en":"High","y_level_ru":"Высокий","x_justification_en":"Shares the Crystal Avenue project office with AL-BINA; formal presentation event held at the New Tashkent Directorate.","x_justification_ru":"Делит проектный офис Crystal Avenue с AL-BINA; официальная презентация проекта прошла в Дирекции Нового Ташкента.","y_justification_en":"General contractor role gives execution-level specification power over Crystal Avenue's build, though no material standard is disclosed.","y_justification_ru":"Роль генподрядчика даёт влияние на спецификацию на уровне строительства Crystal Avenue, хотя стандарт материалов не раскрыт.","quadrant_en":"PRIORITY 1 - Engage now","quadrant_ru":"ПРИОРИТЕТ 1 — начать контакт","potential_en":"High","potential_ru":"Высокий","potential_confirmed":true,"showroom_flag":"yes","action_en":"Engage now: Framework supply agreement for show-flats/model units, with an option to scale to full-phase supply if commercially well received. Free Dekton/Silestone/Sensa sample display in existing showroom.","action_ru":"Начать контакт сейчас: Рамочное соглашение о поставке для демонстрационных квартир/пилотных юнитов с опцией масштабирования на всю фазу при успешном коммерческом приёме. Бесплатное размещение образцов Dekton/Silestone/Sensa в существующем шоуруме.","email":null,"phone":null,"web":"https://uetconstruction.com/en/uet-construction-predstavila-proekt-crystal-avenue-premialnyj-zhiloj-kompleks-v-novom-tashkente/; https://www.linkedin.com/posts/uet-construction_uet-construction-is-proud-to-announce-the-activity-7401554215828885505-0ncq","completeness":62,"priority_original":true},{"id":103,"name":"BI Group","city_en":"Tashkent","city_ru":"Ташкент","address":"Tashkent, Uzbekistan (regional HQ: Astana, Kazakhstan)","segment_en":"E. Developers & Project Ecosystem","segment_ru":"E. Застройщики и экосистема проектов","typology_en":"Hybrid","typology_ru":"Гибрид","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":null,"brand_tier":"other","x":4,"y":4,"x_level_en":"High","x_level_ru":"Высокий","y_level_en":"High","y_level_ru":"Высокий","x_justification_en":"Active construction underway (10ha, ~$200M, ~3,000 apartments planned); self-described '#1 Developer in Central Asia'; no local New Tashkent showroom yet (early construction phase).","x_justification_ru":"Ведётся активное строительство (10 га, ~$200 млн, ~3000 квартир запланировано); самоопределение «застройщик №1 в Центральной Азии»; локального шоурума в New Tashkent пока нет (ранняя стадия строительства).","y_justification_en":"Design+Build+Develop with direct in-house construction control over ~3,000 units — real execution-level specification power at scale, though no finishing standard disclosed.","y_justification_ru":"Design+Build+Develop с прямым контролем строительства над ~3000 квартирами — реальная сила спецификации на уровне исполнения в масштабе, хотя стандарт отделки не раскрыт.","quadrant_en":"PRIORITY 1 - Engage now","quadrant_ru":"ПРИОРИТЕТ 1 — начать контакт","potential_en":"High","potential_ru":"Высокий","potential_confirmed":true,"showroom_flag":"not_yet","action_en":"Engage now: Framework supply agreement for show-flats/model units, with an option to scale to full-phase supply if commercially well received. No showroom yet (early project phase) - revisit once sales office/show-flat opens.","action_ru":"Начать контакт сейчас: Рамочное соглашение о поставке для демонстрационных квартир/пилотных юнитов с опцией масштабирования на всю фазу при успешном коммерческом приёме. Шоурума пока нет (ранняя стадия проекта) — вернуться к вопросу после открытия офиса продаж/демо-квартиры.","email":null,"phone":null,"web":"https://bi.group/en/news/bi-group-nachinaet-stroitelstvo-kvartala-astana-v-novom-tashkente; https://www.linkedin.com/posts/farkhodjon-israilov-66b363151_bi-group-expands-in-uzbekistan-new-deal-activity-7396222675246895104-yD59","completeness":50,"priority_original":false},{"id":104,"name":"Sharq Bahori","city_en":"Tashkent","city_ru":"Ташкент","address":"Sale office, New Tashkent, Uzbekistan","segment_en":"E. Developers & Project Ecosystem","segment_ru":"E. Застройщики и экосистема проектов","typology_en":"Developer","typology_ru":"Застройщик (девелопер)","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":"Laminate parquet; ceramic finishes; German-standard windows and joinery; triple-layer XPS insulation","brand_tier":"other","x":4,"y":5,"x_level_en":"High","x_level_ru":"Высокий","y_level_en":"High","y_level_ru":"Высокий","x_justification_en":"Flagship/showcase status (own logo in the Directorate's official site header), '15-minute city' positioning; sale office exists but showroom/model-apartment status is not confirmed.","x_justification_ru":"Флагманский/показательный статус (собственный логотип в шапке официального сайта Дирекции), позиционирование «15-минутный город»; офис продаж существует, но статус шоурума/демо-квартиры не подтверждён.","y_justification_en":"The only New Tashkent developer disclosing an explicit finishing-materials package (laminate parquet, ceramic finishes, German-standard joinery) — the clearest concrete fit signal among all NT developers.","y_justification_ru":"Единственный застройщик New Tashkent, раскрывающий явный пакет отделочных материалов (ламинированный паркет, керамическая отделка, столярные изделия немецкого стандарта) — самый чёткий конкретный сигнал соответствия среди всех застройщиков NT.","quadrant_en":"PRIORITY 1 - Engage now","quadrant_ru":"ПРИОРИТЕТ 1 — начать контакт","potential_en":"High","potential_ru":"Высокий","potential_confirmed":true,"showroom_flag":"uncertain","action_en":"Engage now: Framework supply agreement for show-flats/model units, with an option to scale to full-phase supply if commercially well received. Likely showroom - verify on-site before proposing sample placement.","action_ru":"Начать контакт сейчас: Рамочное соглашение о поставке для демонстрационных квартир/пилотных юнитов с опцией масштабирования на всю фазу при успешном коммерческом приёме. Вероятный шоурум — проверить на месте перед предложением размещения образцов.","email":"info@sharqbahoriuylari.com","phone":"+998 55 901 2222","web":"https://sharqbahoriuylari.com/; https://newtashkent.uz/ru/about/about-district/information-about-district","completeness":88,"priority_original":false},{"id":105,"name":"Studia 54","city_en":"Tashkent","city_ru":"Ташкент","address":"191014, Saint Petersburg, Novgorodskaya 23A, office 340, Russia; DMCC, Dubai, UAE (representative office)","segment_en":"C. Boutique Interior Design & Architecture Studios","segment_ru":"C. Бутиковые студии дизайна интерьера и архитектурные бюро","typology_en":"Interior Designer","typology_ru":"Дизайн интерьера","channel_en":"Projects - New Tashkent","channel_ru":"Проекты (New Tashkent)","brands":"Not determinable (project page unavailable); described generically as 'natural materials, custom lighting installations, collectible furniture'","brand_tier":"other","x":2,"y":2,"x_level_en":"Low","x_level_ru":"Низкий","y_level_en":"Low","y_level_ru":"Низкий","x_justification_en":"No local presence (Saint Petersburg/Dubai-based); the New Tashkent link itself is the least confirmed of the whole consortium (project page 404, only a social post).","x_justification_ru":"Нет локального присутствия (базируется в Санкт-Петербурге/Дубае); сама связь с New Tashkent — наименее подтверждённая во всём консорциуме (страница проекта 404, только пост в соцсети).","y_justification_en":"Materials described only generically ('natural materials, custom lighting, collectible furniture'), Design only scope.","y_justification_ru":"Материалы описаны только обобщённо («натуральные материалы, авторский свет, коллекционная мебель»), только Design.","quadrant_en":"LOW PRIORITY","quadrant_ru":"НИЗКИЙ ПРИОРИТЕТ","potential_en":"Medium","potential_ru":"Средний","potential_confirmed":false,"showroom_flag":"no","action_en":"Lower priority - monitor: Referral commission on specified volume + pocket sample kit and digital catalog access for renders/specification.","action_ru":"Низкий приоритет — наблюдение: Комиссия за реферальный объём + карманный набор образцов и доступ к цифровому каталогу для рендеров/спецификации.","email":"welcome@studia-54.com","phone":"+7 (931) 270 54 54 (Russia); +971 (58) 562-45-54 (Dubai)","web":"https://vk.com/wall-107858900_3721; https://studia-54.com/","completeness":88,"priority_original":false}];
+
+// Synthesized from the DATA actor records above (project_role / raw_notes / key_messages fields),
+// not a separate scrape. Five distinct named developments could be confirmed this pass; more will
+// surface once a dedicated per-project search is run (see prompt.md v2).
+const PROJECTS = [
+  {
+    id:'p1', name_en:'New Tashkent — District 1 Masterplan', name_ru:'New Tashkent — генплан Района 1',
+    status_key:'construction', status_en:'Approved & underway (Phase 1)', status_ru:'Утверждён и реализуется (Фаза 1)',
+    location_en:'New Tashkent, east of Tashkent (District 1)', location_ru:'Новый Ташкент, к востоку от Ташкента (Район 1)',
+    scale_en:'Phase 1 ≈6,000 ha within a 25,000 ha / 2.5M-resident masterplan; District 1 Detailed Masterplan approved June 2024',
+    scale_ru:'Фаза 1 — ок. 6 000 га в составе генплана на 25 000 га / 2,5 млн жителей; детальный генплан Района 1 утверждён в июне 2024',
+    timeline_en:'Target build-out horizon 2045', timeline_ru:'Целевой горизонт реализации — 2045',
+    developer_en:'New Tashkent Directorate', developer_ru:'Дирекция New Tashkent',
+    contractor_en:'—', contractor_ru:'—',
+    architect_en:'Cross Works Ltd (masterplanner), with Buro Happold, Gillespies, BuroAtlas, Meinhardt Group',
+    architect_ru:'Cross Works Ltd (генпланировщик), совместно с Buro Happold, Gillespies, BuroAtlas, Meinhardt Group',
+    source_en:'Cross Works news release + newtashkent.uz partners page; Wikipedia "New Tashkent".',
+    source_ru:'Пресс-релиз Cross Works + страница партнёров newtashkent.uz; Wikipedia «New Tashkent».',
+    related:[91,92,93,94,95]
+  },
+  {
+    id:'p2', name_en:'Alisher Navoi International Scientific Research Centre', name_ru:'Международный научно-исследовательский центр им. Алишера Навои',
+    status_key:'design', status_en:'In design — flagship cultural building of Phase 1', status_ru:'В стадии проектирования — флагманское здание культурного квартала Фазы 1',
+    location_en:'New Tashkent cultural quarter', location_ru:'Культурный квартал New Tashkent',
+    scale_en:'23,000–29,000 sqm: museum, 400-seat auditorium, research center, school for 200 students',
+    scale_ru:'23 000–29 000 кв. м: музей, аудитория на 400 мест, исследовательский центр, школа на 200 учащихся',
+    timeline_en:'No confirmed public delivery date', timeline_ru:'Публично подтверждённой даты сдачи нет',
+    developer_en:'New Tashkent Directorate', developer_ru:'Дирекция New Tashkent',
+    contractor_en:'Not determinable', contractor_ru:'Не определено',
+    architect_en:'Zaha Hadid Architects', architect_ru:'Zaha Hadid Architects',
+    source_en:'ZHA project page ("Alisher Navoi International Scientific Research Centre").',
+    source_ru:'Страница проекта ZHA («Alisher Navoi International Scientific Research Centre»).',
+    related:[96]
+  },
+  {
+    id:'p3', name_en:'Crystal Avenue', name_ru:'Crystal Avenue',
+    status_key:'sales', status_en:'Active — sales launched', status_ru:'Активно — старт продаж',
+    location_en:'District 1, New Tashkent', location_ru:'Район 1, New Tashkent',
+    scale_en:'Premium / business-class residential complex (unit count not disclosed)',
+    scale_ru:'Премиальный жилой комплекс бизнес-класса (количество юнитов не раскрыто)',
+    timeline_en:'Sales launched 6 December 2025', timeline_ru:'Старт продаж — 6 декабря 2025',
+    developer_en:'AL-BINA Development (sales/marketing), with IMAN Holding (finance partner)',
+    developer_ru:'AL-BINA Development (продажи/маркетинг), при участии IMAN Holding (финансовый партнёр)',
+    contractor_en:'UET Construction (general contractor / project originator)', contractor_ru:'UET Construction (генподрядчик / инициатор проекта)',
+    architect_en:'Not individually disclosed', architect_ru:'Отдельно не раскрыт',
+    source_en:'gazeta.uz (2025-12-01); crystal-avenue.uz; UET Construction site; AL-BINA Instagram.',
+    source_ru:'gazeta.uz (01.12.2025); crystal-avenue.uz; сайт UET Construction; Instagram AL-BINA.',
+    related:[101,102]
+  },
+  {
+    id:'p4', name_en:'Astana District', name_ru:'Квартал «Астана»',
+    status_key:'construction', status_en:'Construction begun (Phase 1)', status_ru:'Строительство начато (Фаза 1)',
+    location_en:'Within New Tashkent', location_ru:'В составе New Tashkent',
+    scale_en:'Phase 1: 10 ha site, ≈$200M value, ≈3,000 apartments planned',
+    scale_ru:'Фаза 1: участок 10 га, стоимость ≈200 млн $, ≈3 000 квартир запланировано',
+    timeline_en:'Construction launch announced by BI Group', timeline_ru:'Начало строительства объявлено BI Group',
+    developer_en:'BI Group ("#1 developer in Central Asia", self-described)', developer_ru:'BI Group (самоопределение — «застройщик №1 в Центральной Азии»)',
+    contractor_en:'BI Group (in-house)', contractor_ru:'BI Group (собственные силы)',
+    architect_en:'Not individually disclosed', architect_ru:'Отдельно не раскрыт',
+    source_en:'BI Group official announcement / LinkedIn coverage of the construction launch.',
+    source_ru:'Официальное объявление BI Group / освещение старта строительства в LinkedIn.',
+    related:[103]
+  },
+  {
+    id:'p5', name_en:'Sharq Bahori (Phases 1 & 2)', name_ru:'Sharq Bahori (Фазы 1 и 2)',
+    status_key:'showcase', status_en:'Flagship / showcase project of the Directorate', status_ru:'Флагманский / витринный проект Дирекции',
+    location_en:'New Tashkent — ~100m from a planned metro station, ~700m from ministry buildings, ~1.5km from the National Library, ~3km from the New Business District, ~8.4km from New Tashkent Airport',
+    location_ru:'New Tashkent — ~100 м от планируемой станции метро, ~700 м от министерских зданий, ~1,5 км от Национальной библиотеки, ~3 км от нового делового района, ~8,4 км от аэропорта New Tashkent',
+    scale_en:'Two phases (Sharq Bahori 1 & 2), smart-home residences', scale_ru:'Два этапа (Sharq Bahori 1 и 2), «умные» жилые дома',
+    timeline_en:'Featured in the Directorate\'s official site header — showcase status', timeline_ru:'Представлен в шапке официального сайта Дирекции — статус витринного проекта',
+    developer_en:'Sharq Bahori (project management by the New Tashkent Construction Directorate)',
+    developer_ru:'Sharq Bahori (управление проектом — Дирекция строительства New Tashkent)',
+    contractor_en:'Not individually disclosed', contractor_ru:'Отдельно не раскрыт',
+    architect_en:'Not individually disclosed', architect_ru:'Отдельно не раскрыт',
+    source_en:'sharqbahoriuylari.com; newtashkent.uz district information page.',
+    source_ru:'sharqbahoriuylari.com; страница информации о районе newtashkent.uz.',
+    related:[104]
+  }
+];
+
+const state = { lang: CONFIG.defaultLang, tab: 'map', filters: { city:'', typology:'', segment:'', quadrant:'', brand:'', xmin:'', xmax:'', ymin:'', ymax:'', complete:'' } };
+
+function t(key){ const d = I18N[state.lang] || I18N.en; return (key in d) ? d[key] : (I18N.en[key]||key); }
+
+const SEG_META = {
+  'A': { color:'var(--seg-a)', shape:'circle' },
+  'B': { color:'var(--seg-b)', shape:'square' },
+  'C': { color:'var(--seg-c)', shape:'triangle' },
+  'D': { color:'var(--seg-d)', shape:'diamond' },
+  'E': { color:'var(--seg-e)', shape:'cross' },
+};
+function segKey(rec){ return (rec.segment_en||'').charAt(0); }
+function segMeta(rec){ return SEG_META[segKey(rec)] || {color:'var(--stone-500)', shape:'circle'}; }
+
+function quadKey(rec){
+  const q = rec.quadrant_en || '';
+  if (q.indexOf('PRIORITY 1') === 0) return 'p1';
+  if (q.indexOf('EDUCATE') === 0) return 'educate';
+  if (q.indexOf('DEVELOP') === 0) return 'develop';
+  if (q === 'LOW PRIORITY') return 'low';
+  return 'unscored';
+}
+const QUAD_COLOR = { p1:'var(--q-p1)', educate:'var(--q-educate)', develop:'var(--q-develop)', low:'var(--q-low)', unscored:'var(--q-unsc)' };
+function quadLabel(rec){
+  const k = quadKey(rec);
+  if (k === 'low') return CONFIG.mode === 'partner' ? t('quad_low_partner') : t('quad_low_internal');
+  return t('quad_' + k);
+}
+
+function potentialSize(rec){
+  const p = (rec.potential_en||'Medium');
+  return p === 'High' ? 9 : (p === 'Low' ? 5 : 7);
+}
+
+// deterministic pseudo-random jitter, stable per record id so re-renders don't shuffle points
+function seededRand(seed){
+  let x = Math.sin(seed * 999.77) * 10000;
+  return x - Math.floor(x);
+}
+function jitter(id, axisSalt){
+  return (seededRand(id * 7 + axisSalt) - 0.5) * 0.62;
+}
+
+function brandTierLabel(tier){
+  if (tier === 'direct') return t('tier_direct');
+  if (tier === 'adjacent') return t('tier_adjacent');
+  if (tier === 'cosentino_ref') return t('tier_cosentino_ref');
+  if (tier === 'other') return t('tier_other');
+  return null;
+}
+
+function showroomLabel(flag){
+  return { yes:t('show_yes'), uncertain:t('show_uncertain'), no:t('show_no'), not_yet:t('show_notyet') }[flag] || t('show_no');
+}
+
+// ---------- filters ----------
+function uniqueSorted(arr){ return [...new Set(arr)].filter(Boolean).sort(); }
+
+function populateFilterOptions(){
+  const bySel = (id, values, labelFn) => {
+    const sel = document.getElementById(id);
+    const cur = sel.value;
+    sel.innerHTML = '';
+    const optAll = document.createElement('option'); optAll.value=''; optAll.textContent = t('opt_all');
+    sel.appendChild(optAll);
+    values.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = labelFn ? labelFn(v) : v; sel.appendChild(o); });
+    sel.value = cur && values.includes(cur) ? cur : '';
+  };
+  bySel('f_city', uniqueSorted(DATA.map(r => r.city_en)), v => (state.lang==='ru' ? (DATA.find(r=>r.city_en===v)||{}).city_ru : v) || v);
+  bySel('f_typology', uniqueSorted(DATA.map(r => r.typology_en)), v => { const r = DATA.find(x=>x.typology_en===v); return state.lang==='ru' ? r.typology_ru : v; });
+  bySel('f_segment', uniqueSorted(DATA.map(r => r.segment_en)), v => { const r = DATA.find(x=>x.segment_en===v); return state.lang==='ru' ? r.segment_ru : v; });
+  const quadKeys = ['p1','educate','develop','low','unscored'];
+  const qsel = document.getElementById('f_quadrant');
+  const curQ = qsel.value; qsel.innerHTML='';
+  const oAll = document.createElement('option'); oAll.value=''; oAll.textContent=t('opt_all'); qsel.appendChild(oAll);
+  quadKeys.forEach(k => { const o = document.createElement('option'); o.value=k;
+    o.textContent = k==='low' ? (CONFIG.mode==='partner'?t('quad_low_partner'):t('quad_low_internal')) : t('quad_'+k);
+    qsel.appendChild(o); });
+  qsel.value = quadKeys.includes(curQ) ? curQ : '';
+
+  const bsel = document.getElementById('f_brand');
+  const curB = bsel.value; bsel.innerHTML='';
+  const bAll = document.createElement('option'); bAll.value=''; bAll.textContent=t('opt_all'); bsel.appendChild(bAll);
+  [['direct',t('tier_direct')],['adjacent',t('tier_adjacent')],['cosentino_ref',t('tier_cosentino_ref')]].forEach(([v,l])=>{
+    const o=document.createElement('option'); o.value=v; o.textContent=l; bsel.appendChild(o);
+  });
+  bsel.value = curB || '';
+}
+
+function applyFilters(){
+  const f = state.filters;
+  return DATA.filter(r => {
+    if (f.city && r.city_en !== f.city) return false;
+    if (f.typology && r.typology_en !== f.typology) return false;
+    if (f.segment && r.segment_en !== f.segment) return false;
+    if (f.quadrant && quadKey(r) !== f.quadrant) return false;
+    if (f.brand && r.brand_tier !== f.brand) return false;
+    if (f.xmin !== '' && (r.x === null || r.x < +f.xmin)) return false;
+    if (f.xmax !== '' && (r.x === null || r.x > +f.xmax)) return false;
+    if (f.ymin !== '' && (r.y === null || r.y < +f.ymin)) return false;
+    if (f.ymax !== '' && (r.y === null || r.y > +f.ymax)) return false;
+    if (f.complete !== '' && r.completeness < +f.complete) return false;
+    return true;
+  });
+}
+
+function onFilterChange(){
+  state.filters.city = document.getElementById('f_city').value;
+  state.filters.typology = document.getElementById('f_typology').value;
+  state.filters.segment = document.getElementById('f_segment').value;
+  state.filters.quadrant = document.getElementById('f_quadrant').value;
+  state.filters.brand = document.getElementById('f_brand').value;
+  state.filters.xmin = document.getElementById('f_xmin').value;
+  state.filters.xmax = document.getElementById('f_xmax').value;
+  state.filters.ymin = document.getElementById('f_ymin').value;
+  state.filters.ymax = document.getElementById('f_ymax').value;
+  state.filters.complete = document.getElementById('f_complete').value;
+  render();
+}
+
+function resetFilters(){
+  ['f_city','f_typology','f_segment','f_quadrant','f_brand','f_xmin','f_xmax','f_ymin','f_ymax','f_complete'].forEach(id=>{
+    document.getElementById(id).value = '';
+  });
+  state.filters = { city:'', typology:'', segment:'', quadrant:'', brand:'', xmin:'', xmax:'', ymin:'', ymax:'', complete:'' };
+  render();
+}
+
+// ---------- lang / tab ----------
+function applyStaticI18n(){
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.textContent = t(key);
+  });
+  document.getElementById('pagetitle').textContent = t(CONFIG.mode === 'partner' ? 'pagetitle_partner' : 'pagetitle_internal');
+  document.getElementById('modebadge').textContent = t(CONFIG.mode === 'partner' ? 'modebadge_partner' : 'modebadge_internal');
+  document.title = t(CONFIG.mode === 'partner' ? 'pagetitle_partner' : 'pagetitle_internal');
+  document.querySelectorAll('#langtoggle button').forEach(b => b.classList.toggle('active', b.dataset.lang === state.lang));
+  const cd = document.getElementById('cover_date'); if (cd) cd.textContent = GENERATED_DATE;
+  const fg = document.getElementById('foot_generated'); if (fg) fg.textContent = (state.lang==='ru' ? 'Сформировано: ' : 'Generated: ') + GENERATED_DATE;
+}
+
+function setLang(l){ state.lang = l; populateFilterOptions(); applyStaticI18n(); render(); syncTopbarHeight(); }
+function setTab(tab){
+  state.tab = tab;
+  document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + tab));
+  render();
+}
+
+// ---------- KPI ----------
+function renderKPI(filtered){
+  document.getElementById('kpi_total').textContent = filtered.length;
+  document.getElementById('kpi_showroom').textContent = filtered.filter(r=>r.showroom_flag==='yes').length;
+  document.getElementById('kpi_priority1').textContent = filtered.filter(r=>quadKey(r)==='p1').length;
+  document.getElementById('kpi_cities').textContent = PROJECTS.length;
+  document.getElementById('filtercount').textContent = filtered.length + ' / ' + DATA.length;
+}
+
+// ---------- Positioning map (SVG scatter) ----------
+const MAPW = 640, MAPH = 460, MARGIN = {l:44, r:18, t:18, b:44};
+const PLOTW = MAPW - MARGIN.l - MARGIN.r, PLOTH = MAPH - MARGIN.t - MARGIN.b;
+const DOMAIN_MIN = 0.5, DOMAIN_MAX = 5.5;
+
+function sx(v){ return MARGIN.l + (v - DOMAIN_MIN) / (DOMAIN_MAX - DOMAIN_MIN) * PLOTW; }
+function sy(v){ return MARGIN.t + PLOTH - (v - DOMAIN_MIN) / (DOMAIN_MAX - DOMAIN_MIN) * PLOTH; }
+
+function shapePath(shape, cx, cy, r){
+  if (shape === 'circle') return '<circle class="dot" cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="COLOR"></circle>';
+  if (shape === 'square'){ const s=r*1.6; return '<rect class="dot" x="'+(cx-s/2)+'" y="'+(cy-s/2)+'" width="'+s+'" height="'+s+'" rx="1.5" fill="COLOR"></rect>'; }
+  if (shape === 'triangle'){ const s=r*1.9; const p=[[cx,cy-s*0.62],[cx-s*0.58,cy+s*0.5],[cx+s*0.58,cy+s*0.5]]; return '<polygon class="dot" points="'+p.map(pt=>pt.join(',')).join(' ')+'" fill="COLOR"></polygon>'; }
+  if (shape === 'diamond'){ const s=r*1.35; const p=[[cx,cy-s],[cx+s,cy],[cx,cy+s],[cx-s,cy]]; return '<polygon class="dot" points="'+p.map(pt=>pt.join(',')).join(' ')+'" fill="COLOR"></polygon>'; }
+  if (shape === 'cross'){ const s=r*0.95; return '<g class="dot" fill="COLOR"><rect x="'+(cx-s)+'" y="'+(cy-s*0.34)+'" width="'+(s*2)+'" height="'+(s*0.68)+'" rx="1"></rect><rect x="'+(cx-s*0.34)+'" y="'+(cy-s)+'" width="'+(s*0.68)+'" height="'+(s*2)+'" rx="1"></rect></g>'; }
+  return '';
+}
+
+function renderMap(filtered){
+  const scored = filtered.filter(r => r.x !== null && r.y !== null);
+  const unscored = filtered.filter(r => r.x === null || r.y === null);
+
+  let svg = '<svg id="scatter" viewBox="0 0 '+MAPW+' '+MAPH+'" xmlns="http://www.w3.org/2000/svg">';
+
+  // quadrant background zones
+  const midX = sx(3.5), midY = sy(3.5);
+  const zones = [
+    {x:MARGIN.l, y:MARGIN.t, w:midX-MARGIN.l, h:midY-MARGIN.t, key:'develop'},
+    {x:midX, y:MARGIN.t, w:MARGIN.l+PLOTW-midX, h:midY-MARGIN.t, key:'p1'},
+    {x:MARGIN.l, y:midY, w:midX-MARGIN.l, h:MARGIN.t+PLOTH-midY, key:'low'},
+    {x:midX, y:midY, w:MARGIN.l+PLOTW-midX, h:MARGIN.t+PLOTH-midY, key:'educate'},
+  ];
+  zones.forEach(z => {
+    svg += '<rect x="'+z.x+'" y="'+z.y+'" width="'+z.w+'" height="'+z.h+'" fill="'+QUAD_COLOR[z.key]+'" opacity="0.07"></rect>';
+  });
+  // gridlines at integers
+  for (let i=1;i<=5;i++){
+    svg += '<line class="gridline" x1="'+sx(i)+'" y1="'+MARGIN.t+'" x2="'+sx(i)+'" y2="'+(MARGIN.t+PLOTH)+'"></line>';
+    svg += '<line class="gridline" x1="'+MARGIN.l+'" y1="'+sy(i)+'" x2="'+(MARGIN.l+PLOTW)+'" y2="'+sy(i)+'"></line>';
+    svg += '<text class="axis-label" x="'+sx(i)+'" y="'+(MARGIN.t+PLOTH+16)+'" text-anchor="middle">'+i+'</text>';
+    svg += '<text class="axis-label" x="'+(MARGIN.l-9)+'" y="'+(sy(i)+3)+'" text-anchor="end">'+i+'</text>';
+  }
+  // axis lines + labels
+  svg += '<line class="axisline" x1="'+MARGIN.l+'" y1="'+(MARGIN.t+PLOTH)+'" x2="'+(MARGIN.l+PLOTW)+'" y2="'+(MARGIN.t+PLOTH)+'"></line>';
+  svg += '<line class="axisline" x1="'+MARGIN.l+'" y1="'+MARGIN.t+'" x2="'+MARGIN.l+'" y2="'+(MARGIN.t+PLOTH)+'"></line>';
+  svg += '<text class="axis-label" x="'+(MARGIN.l+PLOTW/2)+'" y="'+(MAPH-6)+'" text-anchor="middle">'+t('axis_x')+'</text>';
+  svg += '<text class="axis-label" x="-'+(MARGIN.t+PLOTH/2)+'" y="13" text-anchor="middle" transform="rotate(-90)">'+t('axis_y')+'</text>';
+  // quadrant corner labels
+  svg += '<text class="quad-label" x="'+(midX+8)+'" y="'+(MARGIN.t+14)+'" fill="'+QUAD_COLOR.p1+'">'+t('quad_p1').toUpperCase()+'</text>';
+  svg += '<text class="quad-label" x="'+(MARGIN.l+8)+'" y="'+(MARGIN.t+14)+'" fill="'+QUAD_COLOR.develop+'">'+t('quad_develop').toUpperCase()+'</text>';
+  svg += '<text class="quad-label" x="'+(midX+8)+'" y="'+(MARGIN.t+PLOTH-8)+'" fill="'+QUAD_COLOR.educate+'">'+t('quad_educate').toUpperCase()+'</text>';
+  svg += '<text class="quad-label" x="'+(MARGIN.l+8)+'" y="'+(MARGIN.t+PLOTH-8)+'" fill="'+QUAD_COLOR.low+'">'+(CONFIG.mode==='partner'?t('quad_low_partner'):t('quad_low_internal')).toUpperCase()+'</text>';
+
+  scored.forEach(r => {
+    const jx = Math.max(1, Math.min(5, r.x + jitter(r.id, 1)));
+    const jy = Math.max(1, Math.min(5, r.y + jitter(r.id, 2)));
+    const cx = sx(jx), cy = sy(jy);
+    const meta = segMeta(r);
+    const rad = potentialSize(r);
+    svg += shapePath(meta.shape, cx, cy, rad).replace('COLOR', meta.color).replace(/class="dot"/, 'class="dot" data-id="'+r.id+'"');
+    svg += '<circle class="hit" data-id="'+r.id+'" cx="'+cx+'" cy="'+cy+'" r="14"></circle>';
+  });
+  svg += '</svg>';
+  document.getElementById('mapsvgwrap').innerHTML = svg;
+
+  // legend (segments, with shape glyphs -> shape carries identity, color is secondary)
+  let leg = '<div style="width:100%; font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--stone-500); margin-bottom:4px">' + t('filter_segment') + '</div>';
+  uniqueSorted(DATA.map(r=>r.segment_en)).forEach(segEn => {
+    const rec0 = DATA.find(r=>r.segment_en===segEn);
+    const meta = segMeta(rec0);
+    const label = state.lang==='ru' ? rec0.segment_ru : segEn;
+    leg += '<div class="legend-item"><svg width="13" height="13" class="legend-swatch">'+shapePath(meta.shape,6.5,6.5,5).replace('COLOR',meta.color).replace('class="dot"','')+'</svg>'+label+'</div>';
+  });
+  document.getElementById('maplegend').innerHTML = leg;
+
+  // quadrant "how to read" panel
+  const qorder = ['p1','educate','develop','low'];
+  let ql = '';
+  qorder.forEach(k => {
+    const label = k==='low' ? (CONFIG.mode==='partner'?t('quad_low_partner'):t('quad_low_internal')) : t('quad_'+k);
+    ql += '<div style="display:flex; gap:8px; align-items:flex-start; margin-bottom:12px">'
+        + '<span style="width:10px;height:10px;border-radius:2px;background:'+QUAD_COLOR[k]+';margin-top:3px;flex:none"></span>'
+        + '<span style="font-size:12.5px; color:var(--stone-700)">'+label+'</span></div>';
+  });
+  document.getElementById('quadrantlegend').innerHTML = ql;
+
+  // unscored chips
+  document.getElementById('unscoredchips').innerHTML = unscored.map(r =>
+    '<span class="chip" data-id="'+r.id+'">'+escapeHtml(r.name)+'</span>'
+  ).join('') || '<span style="font-size:12px;color:var(--stone-400)">'+t('opt_all')+' 0</span>';
+
+  // interactions
+  document.querySelectorAll('#scatter .hit').forEach(el => {
+    el.addEventListener('pointerenter', (e) => showTooltip(e, +el.dataset.id));
+    el.addEventListener('pointermove', (e) => moveTooltip(e));
+    el.addEventListener('pointerleave', hideTooltip);
+    el.addEventListener('click', () => openDrawer(+el.dataset.id));
+    el.addEventListener('focus', (e) => showTooltip(e, +el.dataset.id));
+  });
+  document.querySelectorAll('.unscored-strip .chip').forEach(el => {
+    el.addEventListener('click', () => openDrawer(+el.dataset.id));
+  });
+}
+
+function escapeHtml(s){
+  const d = document.createElement('div'); d.textContent = (s==null?'':String(s)); return d.innerHTML;
+}
+
+function showTooltip(e, id){
+  const r = DATA.find(x=>x.id===id); if(!r) return;
+  const tip = document.getElementById('tooltip');
+  const nameEl = document.createElement('div'); nameEl.className='tt-name'; nameEl.textContent = r.name;
+  const row1 = document.createElement('div'); row1.className='tt-row'; row1.textContent = (state.lang==='ru'?r.city_ru:r.city_en) + ' · ' + (state.lang==='ru'?r.segment_ru:r.segment_en);
+  const row2 = document.createElement('div'); row2.className='tt-row'; row2.textContent = 'X '+(r.x??'—')+' · Y '+(r.y??'—') + ' · ' + quadLabel(r);
+  tip.innerHTML=''; tip.appendChild(nameEl); tip.appendChild(row1); tip.appendChild(row2);
+  tip.classList.add('show');
+  moveTooltip(e);
+}
+function moveTooltip(e){
+  const tip = document.getElementById('tooltip');
+  const wrap = document.getElementById('mapsvgwrap').getBoundingClientRect();
+  let x = e.clientX - wrap.left + 14, y = e.clientY - wrap.top + 14;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hideTooltip(){ document.getElementById('tooltip').classList.remove('show'); }
+
+// ---------- By city ----------
+function renderCity(filtered){
+  const cities = uniqueSorted(filtered.map(r=>r.city_en));
+  const wrap = document.getElementById('citygrid');
+  wrap.innerHTML = '';
+  cities.forEach(cityEn => {
+    const rows = filtered.filter(r=>r.city_en===cityEn);
+    const cityRu = rows[0].city_ru;
+    const byQ = {p1:0, educate:0, develop:0, low:0, unscored:0};
+    rows.forEach(r => byQ[quadKey(r)]++);
+    const card = document.createElement('div');
+    card.className = 'city-card card';
+    card.addEventListener('click', () => { document.getElementById('f_city').value = cityEn; onFilterChange(); setTab('action'); });
+    let bars = '';
+    ['p1','educate','develop','low'].forEach(k => {
+      const label = k==='low' ? (CONFIG.mode==='partner'?t('quad_low_partner'):t('quad_low_internal')) : t('quad_'+k);
+      const pct = rows.length ? (byQ[k]/rows.length*100) : 0;
+      bars += '<div class="bar-row"><span class="barlabel">'+escapeHtml(label)+'</span><div class="bar-track"><div class="bar-fill" style="width:'+pct+'%;background:'+QUAD_COLOR[k]+'"></div></div><span class="mono-num" style="width:20px;text-align:right">'+byQ[k]+'</span></div>';
+    });
+    card.innerHTML = '<h3>'+escapeHtml(state.lang==='ru'?cityRu:cityEn)+'</h3><div class="n mono-num">'+rows.length+'</div>' + bars;
+    wrap.appendChild(card);
+  });
+}
+
+// ---------- By segment ----------
+const SEGMENT_PITCH = {
+  en: {
+    A: "Category-expansion or distribution-partner conversation depending on whether the account already retails a competing engineered surface.",
+    B: "Free countertop display in exchange for surface-material exclusivity; introductory volume pricing.",
+    C: "Specification partnership: referral commission + pocket sample kit and digital catalog for renders/specification.",
+    D: "Volume/project-based pricing for countertop and cladding packages, with project-stage payment terms.",
+    E: "Framework supply agreement for show-flats/model units, scalable to full-phase supply.",
+  },
+  ru: {
+    A: "Разговор о расширении категории или о дистрибьюторском партнёрстве — в зависимости от того, продаёт ли компания уже конкурирующую инженерную поверхность.",
+    B: "Бесплатная демонстрация столешниц в обмен на эксклюзивность по материалу поверхности; вводное объёмное ценообразование.",
+    C: "Партнёрство по спецификации: комиссия за реферальный объём + карманный набор образцов и цифровой каталог для рендеров/спецификации.",
+    D: "Проектное/объёмное ценообразование на пакеты столешниц и облицовки с условиями оплаты по этапам проекта.",
+    E: "Рамочное соглашение о поставке для демонстрационных квартир/пилотных юнитов с возможностью масштабирования на всю фазу.",
+  },
+};
+
+function renderSegment(filtered){
+  const segs = uniqueSorted(filtered.map(r=>r.segment_en));
+  const wrap = document.getElementById('seggrid');
+  wrap.innerHTML = '';
+  segs.forEach(segEn => {
+    const rows = filtered.filter(r=>r.segment_en===segEn);
+    const letter = segEn.charAt(0);
+    const meta = SEG_META[letter] || {color:'var(--stone-500)'};
+    const segRu = rows[0].segment_ru;
+    const card = document.createElement('div');
+    card.className = 'seg-card card';
+    card.style.borderTop = '3px solid ' + meta.color;
+    card.addEventListener('click', () => { document.getElementById('f_segment').value = segEn; onFilterChange(); setTab('action'); });
+    const pitch = (SEGMENT_PITCH[state.lang] || SEGMENT_PITCH.en)[letter] || '';
+    card.innerHTML = '<h3>'+escapeHtml(state.lang==='ru'?segRu:segEn)+'</h3><div class="n mono-num">'+rows.length+'</div>'
+      + '<p style="font-size:12px; color:var(--stone-700); margin:8px 0 0">'+escapeHtml(pitch)+'</p>';
+    wrap.appendChild(card);
+  });
+}
+
+// ---------- Projects pipeline ----------
+const STATUS_COLOR = { construction:'var(--q-p1)', sales:'var(--brand)', design:'var(--q-develop)', showcase:'var(--seg-a)' };
+
+function renderPipeline(){
+  const wrap = document.getElementById('pipelinegrid');
+  wrap.innerHTML = '';
+  PROJECTS.forEach(p => {
+    const name = state.lang==='ru' ? p.name_ru : p.name_en;
+    const status = state.lang==='ru' ? p.status_ru : p.status_en;
+    const color = STATUS_COLOR[p.status_key] || 'var(--stone-500)';
+    const rows = [
+      ['pl_location', state.lang==='ru'?p.location_ru:p.location_en],
+      ['pl_scale', state.lang==='ru'?p.scale_ru:p.scale_en],
+      ['pl_timeline', state.lang==='ru'?p.timeline_ru:p.timeline_en],
+      ['pl_developer', state.lang==='ru'?p.developer_ru:p.developer_en],
+      ['pl_contractor', state.lang==='ru'?p.contractor_ru:p.contractor_en],
+      ['pl_architect', state.lang==='ru'?p.architect_ru:p.architect_en],
+    ];
+    let html = '<div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:10px">'
+      + '<h3 style="margin:0">'+escapeHtml(name)+'</h3>'
+      + '<span class="badge" style="background:'+color+'; white-space:nowrap">'+escapeHtml(status)+'</span></div>';
+    rows.forEach(([label,val]) => {
+      if (!val) return;
+      html += '<div class="dsection" style="margin-bottom:10px; padding-bottom:10px">'
+        + '<p class="dlabel">'+t(label)+'</p><p class="dval" style="font-size:12.8px">'+escapeHtml(val)+'</p></div>';
+    });
+    const related = p.related.map(id => DATA.find(r=>r.id===id)).filter(Boolean);
+    if (related.length){
+      html += '<div class="dsection" style="border-bottom:none; padding-bottom:0">'
+        + '<p class="dlabel">'+t('pl_related')+'</p><div class="chip-row">'
+        + related.map(r => '<span class="chip" data-id="'+r.id+'">'+escapeHtml(r.name)+'</span>').join('')
+        + '</div></div>';
+    }
+    const src = state.lang==='ru' ? p.source_ru : p.source_en;
+    html += '<p style="font-size:11px; color:var(--stone-400); margin:10px 0 0"><em>'+t('pl_source')+':</em> '+escapeHtml(src)+'</p>';
+
+    const card = document.createElement('div');
+    card.className = 'card pipeline-card';
+    card.innerHTML = html;
+    wrap.appendChild(card);
+  });
+  document.querySelectorAll('#pipelinegrid .chip').forEach(el => {
+    el.addEventListener('click', () => openDrawer(+el.dataset.id));
+  });
+}
+
+// ---------- Competitive analysis (unused in this dashboard; kept for parity with the retail build) ----------
+const BRAND_CATALOG = [
+  {name:'Laminam', tier:'direct', re:/laminam/i},
+  {name:'Interstone', tier:'direct', re:/interstone/i},
+  {name:'Avant Quartz', tier:'direct', re:/avant quartz/i},
+  {name:'Noblle Quartz', tier:'direct', re:/noblle quartz/i},
+  {name:'GRANDEX', tier:'direct', re:/grandex/i},
+  {name:'NEOMARM', tier:'direct', re:/neomarm/i},
+  {name:'Kale', tier:'adjacent', re:/\bkale\b/i},
+  {name:'Geolam', tier:'adjacent', re:/geolam/i},
+  {name:'Natural stone (granite / marble / onyx / travertine / quartzite)', tier:'adjacent', re:/granite|marble|onyx|travertine|quartzite|agate/i},
+];
+
+function renderCompetitive(filtered){
+  const rows = BRAND_CATALOG.map(b => {
+    const matches = filtered.filter(r => r.brands && b.re.test(r.brands));
+    return { ...b, count: matches.length, cities: uniqueSorted(matches.map(m=>state.lang==='ru'?m.city_ru:m.city_en)), matches };
+  }).filter(b => b.count > 0).sort((a,b)=>b.count-a.count);
+
+  let html = '<thead><tr>'
+    + '<th>'+t('comp_th_brand')+'</th><th>'+t('comp_th_tier')+'</th><th>'+t('comp_th_accounts')+'</th><th>'+t('comp_th_cities')+'</th>'
+    + '</tr></thead><tbody>';
+  rows.forEach(b => {
+    html += '<tr>'
+      + '<td><strong>'+escapeHtml(b.name)+'</strong></td>'
+      + '<td>'+brandTierLabel(b.tier)+'</td>'
+      + '<td class="mono-num">'+b.count+'</td>'
+      + '<td>'+escapeHtml(b.cities.join(', '))+'</td>'
+      + '</tr>';
+  });
+  html += '</tbody>';
+  document.getElementById('comptable').innerHTML = html;
+}
+
+// ---------- Action plan ----------
+let sortState = { key: 'quadrant', dir: 1 };
+const QUAD_ORDER = { p1:0, educate:1, develop:2, low:3, unscored:4 };
+
+function sortRows(rows){
+  const k = sortState.key, dir = sortState.dir;
+  return [...rows].sort((a,b) => {
+    let va, vb;
+    if (k==='quadrant'){ va = QUAD_ORDER[quadKey(a)]; vb = QUAD_ORDER[quadKey(b)]; }
+    else if (k==='name'){ va=a.name; vb=b.name; }
+    else if (k==='city'){ va=state.lang==='ru'?a.city_ru:a.city_en; vb=state.lang==='ru'?b.city_ru:b.city_en; }
+    else if (k==='segment'){ va=state.lang==='ru'?a.segment_ru:a.segment_en; vb=state.lang==='ru'?b.segment_ru:b.segment_en; }
+    if (va < vb) return -1*dir; if (va > vb) return 1*dir; return 0;
+  });
+}
+
+function renderAction(filtered){
+  const rows = sortRows(filtered);
+  document.getElementById('tablecount').textContent = rows.length + ' / ' + DATA.length;
+  const cols = [['name','action_th_name'],['city','action_th_city'],['segment','action_th_segment'],['quadrant','action_th_quadrant']];
+  let head = '<tr>';
+  cols.forEach(([key,label]) => {
+    const arrow = sortState.key===key ? (sortState.dir===1?'▲':'▼') : '';
+    head += '<th onclick="onSort(\''+key+'\')">'+t(label)+' <span class="arrow">'+arrow+'</span></th>';
+  });
+  head += '<th>'+t('action_th_step')+'</th><th>'+t('action_th_contact')+'</th></tr>';
+  document.getElementById('actionhead').innerHTML = head;
+
+  let body = '';
+  rows.forEach(r => {
+    const qk = quadKey(r);
+    const qlabel = qk==='low' ? (CONFIG.mode==='partner'?t('quad_low_partner'):t('quad_low_internal')) : t('quad_'+qk);
+    const contact = [r.phone, r.email].filter(Boolean).join(' · ') || t('na');
+    body += '<tr style="cursor:pointer" onclick="openDrawer('+r.id+')">'
+      + '<td><strong>'+escapeHtml(r.name)+'</strong></td>'
+      + '<td>'+escapeHtml(state.lang==='ru'?r.city_ru:r.city_en)+'</td>'
+      + '<td>'+escapeHtml(state.lang==='ru'?r.segment_ru:r.segment_en)+'</td>'
+      + '<td><span class="badge" style="background:'+QUAD_COLOR[qk]+'">'+escapeHtml(qlabel)+'</span></td>'
+      + '<td class="actiontext">'+escapeHtml(state.lang==='ru'?r.action_ru:r.action_en)+'</td>'
+      + '<td style="white-space:nowrap; font-size:12px">'+escapeHtml(contact)+'</td>'
+      + '</tr>';
+  });
+  document.getElementById('actionbody').innerHTML = body || '<tr><td colspan="6" style="padding:24px;text-align:center;color:var(--stone-400)">—</td></tr>';
+}
+
+function onSort(key){
+  if (sortState.key === key) sortState.dir *= -1; else { sortState.key = key; sortState.dir = 1; }
+  render();
+}
+
+function csvEscape(v){
+  const s = (v==null?'':String(v));
+  return /[",\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+}
+async function exportCSV(){
+  const rows = sortRows(applyFilters());
+  const headers = ['name','city','segment','typology','channel','quadrant','x','y','brands','action','email','phone','web'];
+  const lines = [headers.join(',')];
+  rows.forEach(r => {
+    const qk = quadKey(r);
+    const qlabel = qk==='low' ? (CONFIG.mode==='partner'?t('quad_low_partner'):t('quad_low_internal')) : t('quad_'+qk);
+    lines.push([
+      r.name, state.lang==='ru'?r.city_ru:r.city_en, state.lang==='ru'?r.segment_ru:r.segment_en,
+      state.lang==='ru'?r.typology_ru:r.typology_en, state.lang==='ru'?r.channel_ru:r.channel_en,
+      qlabel, r.x??'', r.y??'', r.brands||'', state.lang==='ru'?r.action_ru:r.action_en,
+      r.email||'', r.phone||'', r.web||''
+    ].map(csvEscape).join(','));
+  });
+  const csvText = '﻿' + lines.join('\r\n');
+  const filename = 'cosentino_uzbekistan_new_tashkent_projects_action_plan.csv';
+
+  // Published-artifact viewers can't trigger a plain <a download> — offer the file
+  // through the host's downloads capability there, and fall back to the classic
+  // blob/anchor trick when this file is just opened directly in a browser.
+  if (window.claude && typeof window.claude.use === 'function'){
+    try {
+      const downloads = await window.claude.use('downloads');
+      if (downloads){
+        try {
+          await downloads.save({ filename, data: csvText });
+          return;
+        } catch(err){
+          if (err && err.code === 'extension_not_enabled'){
+            try { await downloads.save({ filename: filename.replace(/\.csv$/, '.txt'), data: csvText }); return; } catch(e2){ /* fall through */ }
+          } else if (err && err.code === 'declined'){
+            return;
+          }
+        }
+      }
+    } catch(e){ /* fall through to classic download */ }
+  }
+
+  const blob = new Blob([csvText], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ---------- Drawer ----------
+function openDrawer(id){
+  const r = DATA.find(x=>x.id===id); if(!r) return;
+  const el = document.getElementById('drawer');
+  const qk = quadKey(r);
+  const qlabel = qk==='low' ? (CONFIG.mode==='partner'?t('quad_low_partner'):t('quad_low_internal')) : t('quad_'+qk);
+  const city = state.lang==='ru'?r.city_ru:r.city_en;
+  const segment = state.lang==='ru'?r.segment_ru:r.segment_en;
+  const typology = state.lang==='ru'?r.typology_ru:r.typology_en;
+  const channel = state.lang==='ru'?r.channel_ru:r.channel_en;
+
+  let html = '<button class="dclose" onclick="closeDrawer()">&times;</button>';
+  html += '<p class="dname">'+escapeHtml(r.name)+'</p>';
+  html += '<p class="dmeta">'+escapeHtml(city)+(r.address?(' · '+escapeHtml(r.address)):'')+'</p>';
+  html += '<div style="margin-bottom:16px"><span class="badge" style="background:'+QUAD_COLOR[qk]+'">'+escapeHtml(qlabel)+'</span></div>';
+
+  html += '<div class="dsection"><p class="dlabel">'+t('d_segment')+'</p><p class="dval">'+escapeHtml(segment)+'</p></div>';
+  html += '<div class="dsection"><p class="dlabel">'+t('d_typology')+'</p><p class="dval">'+escapeHtml(typology)+' · '+escapeHtml(channel)+'</p></div>';
+
+  if (r.brands){
+    const tl = brandTierLabel(r.brand_tier);
+    html += '<div class="dsection"><p class="dlabel">'+t('d_brands')+'</p><p class="dval">'+escapeHtml(r.brands)+(tl?(' — <em>'+escapeHtml(tl)+'</em>'):'')+'</p></div>';
+  }
+
+  html += '<div class="dsection"><p class="dlabel">'+t('d_positioning')+' / '+t('d_fit')+'</p>'
+    + '<div class="dscorepair">'
+    + '<div class="dscorebox"><div class="num mono-num">'+(r.x??'—')+'</div><div style="font-size:11px;color:var(--stone-500)">'+(state.lang==='ru'?(r.x_level_ru||t('insufficient')):(r.x_level_en||t('insufficient')))+'</div></div>'
+    + '<div class="dscorebox"><div class="num mono-num">'+(r.y??'—')+'</div><div style="font-size:11px;color:var(--stone-500)">'+(state.lang==='ru'?(r.y_level_ru||t('insufficient')):(r.y_level_en||t('insufficient')))+'</div></div>'
+    + '</div></div>';
+
+  if (CONFIG.mode === 'internal'){
+    html += '<div class="dsection"><p class="dlabel">'+t('d_positioning_why')+'</p><p class="dval" style="font-size:12.5px">'+escapeHtml(state.lang==='ru'?r.x_justification_ru:r.x_justification_en)+'</p></div>';
+    html += '<div class="dsection"><p class="dlabel">'+t('d_fit_why')+'</p><p class="dval" style="font-size:12.5px">'+escapeHtml(state.lang==='ru'?r.y_justification_ru:r.y_justification_en)+'</p></div>';
+  }
+
+  html += '<div class="dsection"><p class="dlabel">'+t('d_potential')+'</p><p class="dval">'+escapeHtml(state.lang==='ru'?r.potential_ru:r.potential_en)+(r.potential_confirmed?'':'  ('+ (state.lang==='ru'?'по умолчанию, не подтверждено':'default, unconfirmed') +')')+'</p></div>';
+
+  html += '<div class="dsection"><p class="dlabel">'+t('d_action')+'</p><p class="dval" style="font-size:13px">'+escapeHtml(state.lang==='ru'?r.action_ru:r.action_en)+'</p></div>';
+
+  const contactBits = [];
+  if (r.phone) contactBits.push(r.phone);
+  if (r.email) contactBits.push(r.email);
+  html += '<div class="dsection"><p class="dlabel">'+t('d_contact')+'</p><p class="dval">'+(contactBits.length?escapeHtml(contactBits.join(' · ')):t('na'))+'</p></div>';
+
+  if (r.web){
+    html += '<div class="dsection"><p class="dlabel">'+t('d_web')+'</p><p class="dval" style="word-break:break-all"><a href="'+escapeHtml(r.web)+'" target="_blank" rel="noopener">'+escapeHtml(r.web)+'</a></p></div>';
+  }
+
+  html += '<div class="dsection"><p class="dlabel">'+t('d_completeness')+'</p><p class="dval">'+r.completeness+'%</p></div>';
+
+  el.innerHTML = html;
+  el.classList.add('open');
+  document.getElementById('drawerbg').classList.add('open');
+}
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerbg').classList.remove('open');
+}
+
+// ---------- cover ----------
+function dismissCover(){
+  const c = document.getElementById('cover');
+  if (c) c.style.display = 'none';
+}
+
+// ---------- render dispatcher ----------
+function render(){
+  const filtered = applyFilters();
+  renderKPI(filtered);
+  if (state.tab === 'map') renderMap(filtered);
+  else if (state.tab === 'segment') renderSegment(filtered);
+  else if (state.tab === 'pipeline') renderPipeline();
+  else if (state.tab === 'action') renderAction(filtered);
+}
+
+function syncTopbarHeight(){
+  const tb = document.getElementById('topbar');
+  if (tb) document.documentElement.style.setProperty('--topbar-h', tb.offsetHeight + 'px');
+}
+
+function init(){
+  populateFilterOptions();
+  applyStaticI18n();
+  syncTopbarHeight();
+  setTab('map');
+}
+document.addEventListener('DOMContentLoaded', init);
+window.addEventListener('resize', syncTopbarHeight);
+
+</script>
+</body>
+</html>

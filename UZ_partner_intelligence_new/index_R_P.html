@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uzbekistan · Partner Intelligence — Cosentino</title>
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="proposal_A.css">
+<style>
+  /* Cover-only entrance animation — brief, respects prefers-reduced-motion via base.css global rule */
+  .cover-main > * { animation: cover-rise .5s ease both; }
+  .cover-main > *:nth-child(2) { animation-delay: .05s; }
+  .cover-main > *:nth-child(3) { animation-delay: .1s; }
+  .cover-main > *:nth-child(4) { animation-delay: .15s; }
+  .cover-main > *:nth-child(5) { animation-delay: .2s; }
+  .cover-main > *:nth-child(6) { animation-delay: .25s; }
+  @keyframes cover-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body class="theme-a">
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<header class="app-header">
+  <div class="brand-block">
+    <a class="brand-wordmark" href="https://www.cosentino.com/" target="_blank" rel="noopener">COSENTINO</a>
+    <span id="brand-authorship"></span>
+  </div>
+  <div class="header-actions">
+    <button type="button" id="lang-toggle" class="header-btn" aria-label="Toggle language">RU</button>
+  </div>
+</header>
+
+<main id="main-content" class="cover-wrap theme-a-cover">
+  <div class="cover-main">
+    <span class="cover-eyebrow" data-i18n="cover_eyebrow"></span>
+    <h1 class="cover-title" data-i18n="cover_title"></h1>
+    <p class="cover-message" data-i18n="cover_message"></p>
+
+    <div class="cover-stats">
+      <div><div class="cover-stat-value" id="stat-retail">169</div><div class="cover-stat-label" data-i18n="cover_stat_retail"></div></div>
+      <div><div class="cover-stat-value" id="stat-proyectos">83</div><div class="cover-stat-label" data-i18n="cover_stat_proyectos"></div></div>
+      <div><div class="cover-stat-value" id="stat-dev">20</div><div class="cover-stat-label" data-i18n="cover_stat_developments"></div></div>
+      <div><div class="cover-stat-value" id="stat-cities">4</div><div class="cover-stat-label" data-i18n="cover_stat_cities"></div></div>
+    </div>
+
+    <div>
+      <div class="hint" data-i18n="cover_proposal_label" style="margin-bottom:6px;"></div>
+      <div class="cover-proposal-toggle" role="group" aria-label="Design proposal">
+        <button type="button" class="proposal-btn" id="proposal-btn-a" data-i18n="cover_proposal_a" aria-pressed="true"></button>
+        <button type="button" class="proposal-btn" id="proposal-btn-b" data-i18n="cover_proposal_b" aria-pressed="false"></button>
+      </div>
+      <div class="proposal-recommended-tag" data-i18n="cover_proposal_recommended"></div>
+    </div>
+
+    <div class="cover-channels">
+      <a class="channel-card" id="card-retail" href="proposal_A.html#channel=retail&view=map">
+        <span class="channel-card-tag">Retail</span>
+        <h2 class="channel-card-name" data-i18n="cover_enter_retail"></h2>
+        <span class="channel-card-meta">169 actors · Tashkent, Namangan, Samarkand, Andijan</span>
+      </a>
+      <a class="channel-card" id="card-proyectos" href="proposal_A.html#channel=proyectos&view=map">
+        <span class="channel-card-tag">Projects</span>
+        <h2 class="channel-card-name" data-i18n="cover_enter_proyectos"></h2>
+        <span class="channel-card-meta">83 actors · 20 New Tashkent developments</span>
+      </a>
+    </div>
+  </div>
+
+  <section class="cover-brands">
+    <h2 data-i18n="cover_brands_title"></h2>
+    <div class="brand-grid">
+      <a class="brand-tile" href="https://www.cosentino.com/en-gb/colours/silestone" target="_blank" rel="noopener">
+        <img src="assets/silestone.png" alt="Silestone" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Silestone'}))">
+      </a>
+      <a class="brand-tile" href="https://www.cosentino.com/en-gb/colours/dekton" target="_blank" rel="noopener">
+        <img src="assets/dekton.png" alt="Dekton" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Dekton'}))">
+      </a>
+      <a class="brand-tile" href="https://www.cosentino.com/en-gb/colours/eclos" target="_blank" rel="noopener">
+        <img src="assets/eclos.png" alt="Eclos" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Eclos'}))">
+      </a>
+      <a class="brand-tile" href="https://www.cosentino.com/en-gb/colours/sensa" target="_blank" rel="noopener">
+        <img src="assets/sensa.png" alt="Sensa" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Sensa'}))">
+      </a>
+    </div>
+  </section>
+
+  <footer class="cover-footer">
+    <span id="brand-authorship-footer"></span>
+  </footer>
+</main>
+
+<script src="data.js"></script>
+<script src="app-core.js"></script>
+<script>
+(function () {
+  var AC = AppCore;
+  AC.loadSession();
+
+  function renderCover() {
+    document.documentElement.lang = AC.state.lang;
+    var nodes = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].textContent = AC.t(AC.state.lang, nodes[i].getAttribute('data-i18n'));
+    }
+    var authHtml = AC.esc(AC.t(AC.state.lang, 'brand_line_pre')) + ' <strong>' + AC.esc(AC.t(AC.state.lang, 'brand_author')) + '</strong>';
+    document.getElementById('brand-authorship').innerHTML = authHtml;
+    document.getElementById('brand-authorship-footer').innerHTML = authHtml;
+    document.getElementById('lang-toggle').textContent = AC.t(AC.state.lang, 'lang_toggle');
+
+    document.getElementById('stat-retail').textContent = (window.RETAIL_DATA || []).length;
+    document.getElementById('stat-proyectos').textContent = (window.PROYECTOS_DATA || []).length;
+    document.getElementById('stat-dev').textContent = (window.DEVELOPMENTS_DATA || []).length;
+    var cities = {};
+    (window.RETAIL_DATA || []).forEach(function (r) { cities[AC.normCity(r.city)] = true; });
+    document.getElementById('stat-cities').textContent = Object.keys(cities).length;
+
+    var proposalFile = AC.state.proposal === 'B' ? 'proposal_B.html' : 'proposal_A.html';
+    document.getElementById('card-retail').href = proposalFile + '#channel=retail&view=map';
+    document.getElementById('card-proyectos').href = proposalFile + '#channel=proyectos&view=map';
+    document.getElementById('proposal-btn-a').setAttribute('aria-pressed', AC.state.proposal === 'A');
+    document.getElementById('proposal-btn-b').setAttribute('aria-pressed', AC.state.proposal === 'B');
+    document.getElementById('proposal-btn-a').classList.toggle('is-active', AC.state.proposal === 'A');
+    document.getElementById('proposal-btn-b').classList.toggle('is-active', AC.state.proposal === 'B');
+  }
+
+  document.getElementById('lang-toggle').addEventListener('click', function () {
+    AC.state.lang = AC.state.lang === 'en' ? 'ru' : 'en';
+    AC.saveSession();
+    renderCover();
+  });
+  document.getElementById('proposal-btn-a').addEventListener('click', function () { AC.state.proposal = 'A'; AC.saveSession(); renderCover(); });
+  document.getElementById('proposal-btn-b').addEventListener('click', function () { AC.state.proposal = 'B'; AC.saveSession(); renderCover(); });
+
+  renderCover();
+})();
+</script>
+</body>
+</html>

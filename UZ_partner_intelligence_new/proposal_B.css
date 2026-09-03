@@ -1,0 +1,57 @@
+/*!
+ * proposal_B.css — Market Command Center
+ * Deep carbon, neutral text, subtle mineral grid, controlled luminous signal accent.
+ * High contrast, stable hierarchy, no continuous animation (respects reduced-motion regardless).
+ */
+:root {
+  --bg: #0B0D0C;
+  --bg-header: rgba(11,13,12,.92);
+  --bg-panel: #141917;
+  --bg-hover: rgba(255,255,255,.04);
+  --ink: #E9EDEC;
+  --ink-soft: #8FA39D;
+  --line: rgba(233,237,236,.14);
+  --accent: #26E0B0;
+  --accent-strong: #1FBE97;
+  --accent-ink: #06110D;
+  --focus-ring: #26E0B0;
+
+  --font-serif: 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: Consolas, 'SF Mono', 'Cascadia Mono', 'Courier New', monospace;
+
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --shadow: 0 1px 0 rgba(255,255,255,.04), 0 12px 30px rgba(0,0,0,.5);
+
+  --priority-high: #26E0B0;
+  --priority-medium: #E0B84A;
+  --priority-low: #5B6B66;
+  --priority-high-bg: rgba(38,224,176,.14); --priority-high-ink: #6FF0D2;
+  --priority-medium-bg: rgba(224,184,74,.14); --priority-medium-ink: #F0D48E;
+  --priority-low-bg: rgba(139,163,157,.12); --priority-low-ink: #AEC1BC;
+  --exhib-yes-bg: rgba(38,224,176,.14); --exhib-yes-ink: #6FF0D2;
+  --exhib-no-bg: rgba(224,110,74,.14); --exhib-no-ink: #F0A98E;
+  --exhib-nd-bg: rgba(139,163,157,.12); --exhib-nd-ink: #AEC1BC;
+}
+
+body.theme-b {
+  background:
+    linear-gradient(rgba(233,237,236,.05) 1px, transparent 1px) 0 0/100% 28px,
+    linear-gradient(90deg, rgba(233,237,236,.04) 1px, transparent 1px) 0 0/28px 100%,
+    var(--bg);
+}
+
+.cover-wrap.theme-b-cover {
+  background:
+    radial-gradient(1200px 620px at 82% -10%, rgba(38,224,176,.12), transparent 60%),
+    radial-gradient(900px 520px at 10% 110%, rgba(38,224,176,.06), transparent 60%),
+    var(--bg);
+}
+
+#table-container, #dev-table-container { overflow-x: auto; }
+
+.app-header { border-bottom: 1px solid var(--line); }
+.brand-wordmark { color: var(--ink); }
+.kpi-tile, .shortlist-card, .tag-chip, .channel-card, .brand-tile, #map-svg-wrap { box-shadow: var(--shadow); }
+.nav-mod.is-active { box-shadow: 0 0 0 1px var(--accent) inset; }

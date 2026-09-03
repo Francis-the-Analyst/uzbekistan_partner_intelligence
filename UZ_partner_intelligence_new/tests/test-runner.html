@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Uzbekistan Partner Intelligence — automated checks</title>
+<style>
+  body { font-family: Consolas, monospace; padding: 24px; background: #0B0D0C; color: #E9EDEC; }
+  h1 { font-size: 18px; }
+  .pass { color: #6FF0D2; }
+  .fail { color: #F0A98E; font-weight: bold; }
+  .row { padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+  #summary { font-size: 16px; margin-bottom: 16px; padding: 10px; border: 1px solid rgba(255,255,255,.2); }
+</style>
+</head>
+<body>
+<h1>Uzbekistan Partner Intelligence 2.0 — automated data &amp; logic checks</h1>
+<p>Run by opening this file directly in a browser (no build step, no server required). Covers the
+acceptance checks from <code>promptWEBnewdesgin.MD</code> that are expressible as pure-function
+assertions: dataset counts, unique ids, filter-reset integrity, positioning-map minimum separation
+(full dataset and after filtering), score determinism, and CSV escaping. Drawer focus handling,
+EN/RU visual QA, and responsive screenshots are covered separately in <code>PROJECT_STATE.md</code>
+via manual + Playwright QA, since they require a full rendered DOM/browser viewport rather than
+isolated assertions.</p>
+<div id="summary"></div>
+<div id="results"></div>
+
+<script src="../data.js"></script>
+<script src="../app-core.js"></script>
+<script>
+(function () {
+  var AC = AppCore;
+  var results = [];
+  function assert(name, cond, detail) {
+    results.push({ name: name, pass: !!cond, detail: detail || '' });
+  }
+
+  // 1. Dataset counts
+  assert('RETAIL_DATA has 169 records', RETAIL_DATA.length === 169, 'actual: ' + RETAIL_DATA.length);
+  assert('PROYECTOS_DATA has 83 records', PROYECTOS_DATA.length === 83, 'actual: ' + PROYECTOS_DATA.length);
+  assert('DEVELOPMENTS_DATA has 20 records', DEVELOPMENTS_DATA.length === 20, 'actual: ' + DEVELOPMENTS_DATA.length);
+
+  // 2. Unique ids
+  function dupes(arr, key) {
+    var seen = {}, dup = [];
+    arr.forEach(function (r) { var v = r[key]; if (seen[v]) dup.push(v); seen[v] = true; });
+    return dup;
+  }
+  assert('RETAIL_DATA id_actor is unique', dupes(RETAIL_DATA, 'id_actor').length === 0, 'dupes: ' + JSON.stringify(dupes(RETAIL_DATA, 'id_actor')));
+  assert('PROYECTOS_DATA id_actor is unique', dupes(PROYECTOS_DATA, 'id_actor').length === 0, 'dupes: ' + JSON.stringify(dupes(PROYECTOS_DATA, 'id_actor')));
+  assert('DEVELOPMENTS_DATA project_name is unique', dupes(DEVELOPMENTS_DATA, 'project_name').length === 0, 'dupes: ' + JSON.stringify(dupes(DEVELOPMENTS_DATA, 'project_name')));
+
+  // 3. Reset filters restores full count
+  var defaultFilters = { search: '', city: 'all', typology: 'all', priority: 'all', price: 'all', exhibition: 'all', competitive: false, secondary: 'all' };
+  assert('Retail: no-op filters return all 169', AC.filterRecords('retail', defaultFilters, 'en').length === 169);
+  assert('Proyectos: no-op filters return all 83', AC.filterRecords('proyectos', defaultFilters, 'en').length === 83);
+
+  // 4. Combined filter combos do not throw and stay within bounds
+  var combos = [
+    { city: 'Tashkent', typology: 'Kitchen', exhibition: 'Yes', priority: 'all' },
+    { city: 'all', typology: 'all', exhibition: 'Not determinable', priority: 'High' },
+    { city: 'Samarkand', typology: 'Showroom', exhibition: 'all', priority: 'Medium' }
+  ];
+  combos.forEach(function (c, idx) {
+    var f = Object.assign({}, defaultFilters, c);
+    var out;
+    var threw = false;
+    try { out = AC.filterRecords('retail', f, 'en'); } catch (e) { threw = true; }
+    assert('Combo filter #' + (idx + 1) + ' does not throw and is bounded', !threw && out.length <= 169, 'length=' + (out ? out.length : 'n/a'));
+  });
+
+  // 5. Positioning map — minimum separation, full dataset and filtered subset, both breakpoints
+  [
+    { label: 'retail full @ desktop', channel: 'retail', filters: defaultFilters, width: 900, minDist: AC.MIN_DIST_DESKTOP },
+    { label: 'retail full @ narrow', channel: 'retail', filters: defaultFilters, width: 380, minDist: AC.MIN_DIST_NARROW },
+    { label: 'retail Tashkent-only (densest city)', channel: 'retail', filters: Object.assign({}, defaultFilters, { city: 'Tashkent' }), width: 900, minDist: AC.MIN_DIST_DESKTOP },
+    { label: 'proyectos full @ desktop', channel: 'proyectos', filters: defaultFilters, width: 900, minDist: AC.MIN_DIST_DESKTOP }
+  ].forEach(function (cfg) {
+    var recs = AC.filterRecords(cfg.channel, cfg.filters, 'en');
+    var pts = AC.layoutPoints(recs, cfg.channel, 'en', { width: cfg.width, height: 480, minDist: cfg.minDist });
+    var minD = AC.minPairwiseDistance(pts);
+    assert('Map min separation OK — ' + cfg.label + ' (n=' + recs.length + ')', recs.length < 2 || minD >= cfg.minDist - 0.01, 'minDist=' + minD.toFixed(2) + ' required>=' + cfg.minDist);
+  });
+
+  // 6. Score determinism
+  var sample = RETAIL_DATA[0];
+  var s1 = AC.computeScore(sample, 'retail', 'en').total;
+  var s2 = AC.computeScore(sample, 'retail', 'en').total;
+  assert('computeScore is deterministic for a given record', s1 === s2, s1 + ' vs ' + s2);
+  assert('computeScore total is within 0..100', s1 >= 0 && s1 <= 100, 'total=' + s1);
+
+  // 7. CSV escaping
+  assert('csvEscape quotes a value containing a comma', AC.csvEscape('a,b') === '"a,b"');
+  assert('csvEscape doubles internal quotes', AC.csvEscape('a"b') === '"a""b"');
+  assert('csvEscape quotes a value containing a newline', AC.csvEscape('a\nb') === '"a\nb"');
+  var csv = AC.toCSV([{ x: 'a,b', y: 1 }], [{ key: 'x', label: 'X' }, { key: 'y', label: 'Y' }]);
+  assert('toCSV produces header + 1 data row', csv.split('\r\n').length === 2, csv);
+
+  // 8. Evidence helpers
+  assert('hasEvidence rejects "Not specified"', AC.hasEvidence('Not specified') === false);
+  assert('hasEvidence rejects empty string', AC.hasEvidence('') === false);
+  assert('hasEvidence accepts real text', AC.hasEvidence('EGGER boards') === true);
+  assert('hasEvidence does NOT collapse "Not determinable" (must stay a real enum state elsewhere)', AC.hasEvidence('Not determinable') === true);
+
+  // Render
+  var pass = results.filter(function (r) { return r.pass; }).length;
+  document.getElementById('summary').innerHTML = (pass === results.length)
+    ? '<span class="pass">ALL PASS — ' + pass + '/' + results.length + '</span>'
+    : '<span class="fail">FAILURES PRESENT — ' + pass + '/' + results.length + ' passed</span>';
+  document.getElementById('results').innerHTML = results.map(function (r) {
+    return '<div class="row"><span class="' + (r.pass ? 'pass' : 'fail') + '">' + (r.pass ? 'PASS' : 'FAIL') + '</span> — ' + r.name + (r.detail ? ' <small>(' + r.detail + ')</small>' : '') + '</div>';
+  }).join('');
+  document.title = (pass === results.length ? 'PASS ' : 'FAIL ') + pass + '/' + results.length + ' — test-runner';
+})();
+</script>
+</body>
+</html>
