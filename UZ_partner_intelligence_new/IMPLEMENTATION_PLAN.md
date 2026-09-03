@@ -72,6 +72,15 @@ UZ_partner_intelligence_new/
 
 Both proposals load `data.js` then `app-core.js` then call `AppCore.mount({ theme: 'A'|'B' })`. They share the same element IDs and the same render functions; only `proposal_A.css` / `proposal_B.css` and a body class (`theme-a` / `theme-b`) differ, plus a few theme-conditional composition branches inside `app-core.js` (e.g. Proposal B's map legend sits in a side rail instead of a footer strip). This satisfies "share data, filter logic, accessibility and functionality; only the visual direction/composition differs" without maintaining two logic trees.
 
+> **Amendment, 2026-09-03 (interactive session):** per Francisco González's explicit direction, the
+> product now ships as **Proposal A only**. `index_R_P.html` no longer offers a proposal picker (it
+> hardcodes `AC.state.proposal = 'A'` and links straight into `proposal_A.html`), and no page links to
+> `proposal_B.html` anywhere in the live flow. The architecture description above is left as written
+> because it's still an accurate account of *how the two proposals were built* (shared core, theme-only
+> divergence) — useful if Proposal B is ever revived — but treat every "both proposals" statement in this
+> document as historical, not as a description of what ships today. `tests/design-contract.test.mjs`
+> enforces the single-proposal contract going forward.
+
 State lives in one object (`AppCore.state`): `lang`, `channel`, `proposal`, `view`, `filters{search,city,typology,priority,price,exhibition,competitive,secondary}`, `selectedId`. `lang` and `proposal` persist via `sessionStorage` (spec: "durante la sesión"). Channel/view/filters reset per navigation, as expected for a fresh drill-down.
 
 ## 3. Priority / scoring model ("About the model")

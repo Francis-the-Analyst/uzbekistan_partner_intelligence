@@ -1332,6 +1332,16 @@
       if (panel && panel.classList.contains('is-open-mobile')) panel.classList.remove('is-open-mobile');
     });
     window.addEventListener('resize', debounce(function () { if (state.view === 'map') renderMap(currentFiltered()); }, 150));
+    window.addEventListener('hashchange', function () {
+      var previousChannel = state.channel;
+      parseHash();
+      if (state.channel !== previousChannel) {
+        state.filters = { search: '', city: 'all', typology: 'all', priority: 'all', price: 'all', exhibition: 'all', competitive: false, secondary: 'all' };
+        extraMaterialFilter = null;
+      }
+      saveSession();
+      render();
+    });
 
     render();
   }

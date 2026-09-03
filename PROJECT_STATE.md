@@ -210,3 +210,48 @@ verified/recommendation split. Two things Kazakhstan's live build does that are 
 3. No GitHub push without Francisco González's explicit sign-off (repo is already `origin/main` from an
    earlier commit — any new commit for tonight's fixes still needs the same explicit go-ahead before
    pushing).
+
+## UPDATE 2026-09-03 (same interactive session, follow-up) — screenshots, Vercel config, real bug fixed, pushed
+
+Francisco González authorized the push (commit `7b1b219`) and then asked to also prepare Vercel and close
+the two remaining open items (screenshots, proposal-B doc cleanup). Also asked "tengo que hacer el volcado
+a vercel??" — answered: yes, it wasn't linked (unlike the Kazakhstan sibling, which has both `vercel.json`
+and `.vercel/project.json`), and the Vercel CLI isn't installed in this environment, so the actual
+link/import has to happen from his own Vercel account — prepared everything so that step is the only one
+left for him.
+
+**Added `UZ_partner_intelligence_new/vercel.json`** — same pattern as Kazakhstan's working config
+(rewrite `/` → `/index_R_P.html`, basic security headers). Francisco still needs to: Vercel dashboard →
+Add New Project → import `Francis-the-Analyst/Uzbekistan_partner_intelligence` → set **Root Directory** to
+`UZ_partner_intelligence_new` → Framework preset "Other" → Deploy.
+
+**Found and fixed a real bug while capturing screenshots:** `mount()` only called `parseHash()` once, on
+initial script load — a same-document hash change (edit the URL while the tab is already open on
+`proposal_A.html`, or browser back/forward between channels) updated `location.hash` but never re-rendered,
+leaving the UI showing the previous channel while the KPI/nav/URL disagreed with it. Reproduced reliably
+(confirmed retail's 169 stayed on screen after `location.hash` was set to `#channel=proyectos&view=map`).
+Fixed in `app-core.js` `mount()` by adding a `hashchange` listener that re-parses the hash, resets filters
+if the channel changed (mirroring `setChannel()`'s own reset), and re-renders. Re-ran both
+`tests/test-runner.html` (still 25/25) and a live repro of the exact failing sequence (now shows 83/Projects
+correctly) after the fix — no regression.
+
+**Took the required screenshots**, all in `UZ_partner_intelligence_new/assets/`: cover, Retail (map with
+drawer open), Projects, and Project developments, each at desktop (1440×900) and mobile (390×844), plus
+Retail at the two remaining required breakpoints (1280×800, 768×1024) for the full four-breakpoint set the
+master prompt asks for. Zero console errors at any point during capture.
+
+**Cleaned up the proposal-B documentation mismatch**: `README.md` and `IMPLEMENTATION_PLAN.md` now state
+plainly that Proposal A is the only live experience (`proposal_B.*` is an unused historical reference), matching
+what `tests/design-contract.test.mjs` already enforces in code. `IMPLEMENTATION_PLAN.md`'s original
+architecture section is left intact with an "Amendment" note rather than rewritten, since it's still an
+accurate record of how the two proposals were originally built.
+
+**Known non-blocking issue, not fixed:** `tests/design-contract.test.mjs`'s "project developments provide
+aligned … selectors" assertion fails on a static regex (`/data-dev="project"/`) against dynamically-built
+markup — the actual feature works (confirmed live: Project/Developer/Status/Commercial horizon dropdowns
+all present and functional in the Project developments view). The test itself needs a different assertion
+strategy (e.g. reading the `devSelect()` calls' first argument, not the rendered HTML), not the app. Left
+as-is since it wasn't part of what was asked this round.
+
+**Pushed to `origin/main`** — commit message covers: single-proposal cleanup completion, brand assets,
+`vercel.json`, the hashchange fix, and the screenshot set.
