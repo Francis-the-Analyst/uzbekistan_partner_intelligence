@@ -145,16 +145,68 @@ All new, under `UZ_partner_intelligence_new/`: `IMPLEMENTATION_PLAN.md`, `data.j
 `index_proyectos.html`, `index_v2/`, and every `data_v3/*.json` dataset are untouched, per the prompt's
 explicit "conserva intactos los archivos actuales" instruction.
 
-## NEXT ACTION
+## NEXT ACTION — UPDATE 2026-09-03, interactive session (browser QA now possible)
 
-1. Open `UZ_partner_intelligence_new/tests/test-runner.html` in a browser and confirm ALL PASS.
-2. Open `UZ_partner_intelligence_new/index_R_P.html` → both channels → all six views (five for Retail) →
-   open and close the drawer with mouse, Enter/Space, and Escape → toggle EN/RU → try the mobile filter
-   panel at a narrow width (confirm the new close button actually closes it) → export CSV in both
-   channels and in Project developments.
-3. If all green: source the four Cosentino brand images per `assets/README.md`, take the four responsive
-   screenshots the prompt requires, and this workstream is ready to show Francisco González ahead of
-   publishing (no GitHub push without his explicit sign-off, per the prompt).
-4. If anything fails: the most likely fragile spot is the positioning-map collision-avoidance algorithm
-   under real data density — it was reasoned through analytically (see Tests §Analytical) but never
-   rendered. Check that first via the test-runner's map-separation assertions.
+Ran the deferred browser QA (this session has a real browser via the `playwright-cli` skill, unlike the
+overnight run). Result: **the build holds up. No functional bugs found in the app itself.**
+
+**Confirmed via live browser (local static server, `UZ_partner_intelligence_new/` served at its real
+path so relative asset URLs resolve):**
+- `tests/test-runner.html` → **PASS 25/25**. Only console message anywhere in the app: a benign
+  `favicon.ico` 404 (cosmetic, not from missing assets).
+- Cover (`index_R_P.html`) → Retail → Positioning map → drawer open (click a map point) → drawer close
+  (Escape) → EN/RU toggle (full UI + drawer + KPI + nav-band translation, confirmed both directions) →
+  Projects channel switch → `Project developments` tab (6th nav module appears correctly, 20 records) —
+  all clean, zero console errors at every step.
+- Mobile (390×844): cover, retail map, and the mobile filters panel (`Filters` trigger → full-panel
+  overlay → `Done` close button) all reflow correctly with **no overlap** of the authorship line (worth
+  noting: the live Kazakhstan sibling site currently *does* have an authorship/subhead overlap bug on
+  mobile at this same width — this repo's header handles it better; worth porting that fix back).
+- Drawer content verified rich and correct: Verified evidence vs. `Commercial recommendation` (blue-bordered
+  callout) clearly separated, `Not evidenced in current research` shown rather than invented data, and a
+  `Data provenance` field (`data_source · tool_used · _source_file`) that's more granular than what the
+  Kazakhstan sibling's drawer currently shows — also worth porting back.
+- One non-issue investigated and ruled out: an apparent "wrong channel on direct hash navigation" only
+  reproduced when using Playwright's `goto()` to change *only* the URL hash while already on
+  `proposal_A.html` (same-document hash navigation). A real fresh load of a `#channel=proyectos...` URL,
+  and clicking the in-app `Projects` button, both work correctly. Not worth chasing further — no evidence
+  a real user hitting a shared/bookmarked link would see it.
+
+**Fixed this session:**
+1. **Brand images (previously the only real gap) — filled.** Copied `silestone.jpg`, `dekton.jpg`,
+   `eclos.jpg`, `sensa.jpg` from the sibling Kazakhstan project (`kazahistan/KZ_retail_proyect/assets/`),
+   which sourced them from the same official Cosentino pages during its own night run — same brand, same
+   product lines, safe to reuse rather than re-fetch. Verified rendering with no `onerror` fallback
+   triggering and no console errors.
+2. **`assets/README.md` had a stale instruction** telling whoever fills the images to use `.png` — the
+   actual markup in `index_R_P.html` has always requested `.jpg`. Fixed the doc to match the code.
+
+**Design-direction request from Francisco González (2026-09-03, live chat) — already satisfied by the
+existing build, no change needed:** he asked to skip the dark "Market Command Center" proposal and commit
+to the light/corporate one. Checked `index_R_P.html`: it already hardcodes `AC.state.proposal = 'A'` and
+never renders an A/B picker — `proposal_B.html`/`proposal_B.css` exist on disk but are not linked from
+anywhere in the live flow. `IMPLEMENTATION_PLAN.md`/`README.md` still describe a dual-proposal system;
+that's now a documentation/reality mismatch worth a cleanup pass (not urgent — doesn't affect behavior),
+not a code change.
+
+**Kazakhstan comparison (`https://kazakhstan-partner-intelligence.vercel.app/`, same master prompt,
+same shared design language):** structurally near-identical — same type system, same off-white/black
+palette, same nav-band-of-5(+1), same chip filters, same double-ring showroom marker, same drawer
+verified/recommendation split. Two things Kazakhstan's live build does that are worth *considering* here
+(optional polish, not required — did not implement either, to avoid touching a build that just passed
+25/25 without a specific ask):
+- Its positioning map groups points into per-city lanes with visible city headers; this repo plots one
+  continuous field colored by priority tier instead. Both are legitimate — Uzbekistan has 4 cities vs.
+  Kazakhstan's 3, so lanes would be narrower here.
+- Its drawer shows the priority score as one large numeral (matching the KPI-tile numeral treatment
+  used everywhere else); this repo shows it as smaller inline text (`92/100`) next to the tier label.
+
+**Remaining before this goes to Francisco González / Vercel:**
+1. Take the four required responsive screenshots (1440×900 / 1280×800 / 768×1024 / 390×844) for the
+   record — not done this session (spent the browser budget on functional QA + the asset fix instead;
+   screenshots are the one item from the prompt's acceptance checklist still open).
+2. Optional: reconcile `IMPLEMENTATION_PLAN.md`/`README.md` proposal-B language with the single-proposal
+   reality.
+3. No GitHub push without Francisco González's explicit sign-off (repo is already `origin/main` from an
+   earlier commit — any new commit for tonight's fixes still needs the same explicit go-ahead before
+   pushing).

@@ -2,20 +2,24 @@
 
 The cover page (`index_R_P.html`) links to four Cosentino product lines. Per the master prompt, these
 images must be real assets downloaded from the official Cosentino pages (or already-documented local
-assets) — never AI-generated art. No such image files exist anywhere in this repository yet (checked
-`assets/`, `.firecrawl/`, and `data_v3/.firecrawl/`; only unrelated internal-dashboard screenshots were
-found), so the component is fully implemented but currently renders a text fallback tile instead of a
-fabricated image.
+assets) — never AI-generated art.
 
-Drop the following four files into this folder with these **exact filenames** (the markup in
-`index_R_P.html` already points at them and needs no further changes once the files exist):
+**Update 2026-09-03 (interactive session): filled.** `silestone.jpg`, `dekton.jpg`, `eclos.jpg` and
+`sensa.jpg` now exist in this folder — reused from the sibling Kazakhstan project
+(`kazahistan/KZ_retail_proyect/assets/`), which sourced them from the same official Cosentino product
+pages during its own night run. Same brand, same product lines, same source pages — safe to share
+across every country build rather than re-downloading per market. (The `.png` extension named below in
+the original instructions was a documentation mistake — the actual markup in `index_R_P.html` has always
+requested `.jpg`, which is what both this folder and Kazakhstan's now consistently use.)
+
+Exact filenames expected by `index_R_P.html` (no HTML/CSS changes needed, they already point here):
 
 | File | Source page | Alt text already set |
 |---|---|---|
-| `assets/silestone.png` | https://www.cosentino.com/en-gb/colours/silestone | `Silestone` |
-| `assets/dekton.png` | https://www.cosentino.com/en-gb/colours/dekton | `Dekton` |
-| `assets/eclos.png` | https://www.cosentino.com/en-gb/colours/eclos | `Eclos` |
-| `assets/sensa.png` | https://www.cosentino.com/en-gb/colours/sensa | `Sensa` |
+| `assets/silestone.jpg` | https://www.cosentino.com/en-gb/colours/silestone | `Silestone` |
+| `assets/dekton.jpg` | https://www.cosentino.com/en-gb/colours/dekton | `Dekton` |
+| `assets/eclos.jpg` | https://www.cosentino.com/en-gb/colours/eclos | `Eclos` |
+| `assets/sensa.jpg` | https://www.cosentino.com/en-gb/colours/sensa | `Sensa` |
 
 Each `<img>` has `onerror` wired to swap itself for a plain-text label tile, so the page degrades
 gracefully (no broken-image icons) whether or not the files are present. Once real files are added,

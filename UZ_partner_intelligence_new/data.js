@@ -6962,3 +6962,10 @@ const DEVELOPMENTS_DATA = [
   }
 ]
 ;
+
+// The application core is isolated in its own closure and reads datasets from
+// the global object. Keep the source constants available for local tests while
+// exposing the same arrays to the shared UI runtime.
+window.RETAIL_DATA = RETAIL_DATA;
+window.PROYECTOS_DATA = PROYECTOS_DATA;
+window.DEVELOPMENTS_DATA = DEVELOPMENTS_DATA;

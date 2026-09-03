@@ -58,6 +58,27 @@
 
   var I18N = {
     en: {
+      cover_choose_channel: 'Choose an intelligence channel',
+      cover_explore: 'Explore market →',
+      cover_view: 'View channel →',
+      internal_use: 'Commercial intelligence · Internal use',
+      executive_intelligence: 'Executive intelligence · Internal decision support',
+      hero_eyebrow: 'Market view · Commercial intelligence',
+      hero_title: 'Where should the next conversation start?',
+      hero_context: 'A working priority model for prospective partners, built from category fit, physical exposure, market evidence and price positioning.',
+      filters_refine: 'Refine the market',
+      filters_search_label: 'Search',
+      map_key: 'Opportunity key',
+      opportunity_field: 'Opportunity field',
+      all_accounts: 'All accounts in view',
+      first_conversations: 'First conversations',
+      developments_title: 'New Tashkent opportunity timeline',
+      dev_project: 'Project',
+      dev_horizon: 'Commercial horizon',
+      horizon_execution: 'In execution / sale',
+      horizon_near: 'Near-term milestone',
+      horizon_concept: 'Announced / concept',
+      horizon_delivered: 'Delivered',
       brand_line_pre: 'Market research & dashboard created by',
       brand_author: 'Francisco González',
       cover_eyebrow: 'Cosentino · Uzbekistan',
@@ -192,6 +213,27 @@
       not_available: 'Not available'
     },
     ru: {
+      cover_choose_channel: 'Выберите канал аналитики',
+      cover_explore: 'Изучить рынок →',
+      cover_view: 'Открыть канал →',
+      internal_use: 'Коммерческая аналитика · Для внутреннего использования',
+      executive_intelligence: 'Executive intelligence · Поддержка внутренних решений',
+      hero_eyebrow: 'Обзор рынка · Коммерческая аналитика',
+      hero_title: 'С кем начать следующий разговор?',
+      hero_context: 'Рабочая модель приоритизации потенциальных партнёров на основе соответствия категории, физической экспозиции, рыночных свидетельств и ценового позиционирования.',
+      filters_refine: 'Уточнить рынок',
+      filters_search_label: 'Поиск',
+      map_key: 'Ключ возможностей',
+      opportunity_field: 'Поле возможностей',
+      all_accounts: 'Все аккаунты в выборке',
+      first_conversations: 'Первые переговоры',
+      developments_title: 'График возможностей New Tashkent',
+      dev_project: 'Проект',
+      dev_horizon: 'Коммерческий горизонт',
+      horizon_execution: 'В реализации / продаже',
+      horizon_near: 'Ближайший этап',
+      horizon_concept: 'Анонс / концепция',
+      horizon_delivered: 'Завершён',
       brand_line_pre: 'Маркетинговое исследование и дашборд подготовил',
       brand_author: 'Francisco González',
       cover_eyebrow: 'Cosentino · Узбекистан',
@@ -343,7 +385,7 @@
     view: 'map',
     filters: { search: '', city: 'all', typology: 'all', priority: 'all', price: 'all', exhibition: 'all', competitive: false, secondary: 'all' },
     selectedId: null,
-    devFilters: { status: 'all', developer: 'all' },
+    devFilters: { project: 'all', status: 'all', developer: 'all', horizon: 'all' },
     selectedDevId: null
   };
 
@@ -693,6 +735,8 @@
     var recs = currentFiltered();
     var countEl = byId('results-count');
     if (countEl) countEl.textContent = recs.length + ' ' + t(state.lang, 'results_count');
+    var liveCountEl = byId('filter-live-count');
+    if (liveCountEl) liveCountEl.textContent = recs.length + ' / ' + getDataset(state.channel).length;
 
     if (state.view === 'map') renderMap(recs);
     else if (state.view === 'list') renderTable(recs);
@@ -739,6 +783,12 @@
     if (switchLink) {
       var target = state.proposal === 'A' ? 'proposal_B.html' : 'proposal_A.html';
       switchLink.href = target + '#channel=' + state.channel + '&view=' + state.view;
+    }
+    var modelSummary = byId('model-summary');
+    if (modelSummary) {
+      var modelKey = state.channel === 'proyectos' ? 'model_about_proyectos' : 'model_about_retail';
+      modelSummary.setAttribute('data-i18n', modelKey);
+      modelSummary.textContent = t(state.lang, modelKey);
     }
   }
 
@@ -1046,40 +1096,50 @@
 
   var devSortState = { key: 'project_name', dir: 1 };
 
+  function developmentHorizon(dev) {
+    var status = String(dev.status || '').toLowerCase();
+    var delivery = String(dev.estimated_delivery || '').toLowerCase();
+    if (status.indexOf('entregad') !== -1) return 'delivered';
+    if (/2026|2027|inminente|acabados finales/.test(delivery)) return 'near';
+    if (status.indexOf('construcci') !== -1 || status.indexOf('venta') !== -1) return 'execution';
+    return 'concept';
+  }
+
   function filteredDevelopments() {
     var data = global.DEVELOPMENTS_DATA || [];
     return data.filter(function (d) {
+      if (state.devFilters.project !== 'all' && d.project_name !== state.devFilters.project) return false;
       if (state.devFilters.status !== 'all' && d.status !== state.devFilters.status) return false;
       if (state.devFilters.developer !== 'all' && d.developer !== state.devFilters.developer) return false;
+      if (state.devFilters.horizon !== 'all' && developmentHorizon(d) !== state.devFilters.horizon) return false;
       return true;
     });
+  }
+
+  function devSelect(key, labelKey, options, labeler) {
+    return '<label class="dev-select"><span>' + esc(t(state.lang, labelKey)) + '</span><select data-dev="' + key + '">' +
+      '<option value="all">' + esc(t(state.lang, 'filters_all')) + '</option>' +
+      options.map(function (value) {
+        return '<option value="' + esc(value) + '"' + (state.devFilters[key] === value ? ' selected' : '') + '>' + esc(labeler ? labeler(value) : value) + '</option>';
+      }).join('') + '</select></label>';
   }
 
   function renderDevelopments() {
     var filterWrap = byId('dev-filters');
     var data = global.DEVELOPMENTS_DATA || [];
     if (filterWrap) {
+      var projects = uniqueValues(data, 'project_name');
       var statuses = uniqueValues(data, 'status');
       var developers = uniqueValues(data, 'developer');
-      var html = '<div class="chip-group" role="group" aria-label="' + esc(t(state.lang, 'dev_status')) + '">' +
-        '<span class="chip-group-label">' + esc(t(state.lang, 'dev_status')) + '</span>' +
-        '<button type="button" class="chip' + (state.devFilters.status === 'all' ? ' is-pressed' : '') + '" data-dev="status" data-value="all" aria-pressed="' + (state.devFilters.status === 'all') + '">' + esc(t(state.lang, 'filters_all')) + '</button>' +
-        statuses.map(function (s) {
-          var pressed = state.devFilters.status === s;
-          return '<button type="button" class="chip' + (pressed ? ' is-pressed' : '') + '" data-dev="status" data-value="' + esc(s) + '" aria-pressed="' + pressed + '">' + esc(s) + '</button>';
-        }).join('') + '</div>' +
-        '<div class="chip-group" role="group" aria-label="' + esc(t(state.lang, 'dev_developer')) + '">' +
-        '<span class="chip-group-label">' + esc(t(state.lang, 'dev_developer')) + '</span>' +
-        '<button type="button" class="chip' + (state.devFilters.developer === 'all' ? ' is-pressed' : '') + '" data-dev="developer" data-value="all" aria-pressed="' + (state.devFilters.developer === 'all') + '">' + esc(t(state.lang, 'filters_all')) + '</button>' +
-        developers.map(function (d) {
-          var pressed = state.devFilters.developer === d;
-          return '<button type="button" class="chip' + (pressed ? ' is-pressed' : '') + '" data-dev="developer" data-value="' + esc(d) + '" aria-pressed="' + pressed + '">' + esc(d.length > 28 ? d.slice(0, 28) + '…' : d) + '</button>';
-        }).join('') + '</div>';
+      var horizons = ['execution', 'near', 'concept', 'delivered'];
+      var html = devSelect('project', 'dev_project', projects) +
+        devSelect('developer', 'dev_developer', developers) +
+        devSelect('status', 'dev_status', statuses) +
+        devSelect('horizon', 'dev_horizon', horizons, function (value) { return t(state.lang, 'horizon_' + value); });
       filterWrap.innerHTML = html;
-      Array.prototype.forEach.call(filterWrap.querySelectorAll('.chip'), function (btn) {
-        on(btn, 'click', function () {
-          var key = btn.getAttribute('data-dev'), value = btn.getAttribute('data-value');
-          state.devFilters[key] = (state.devFilters[key] === value) ? 'all' : value;
+      Array.prototype.forEach.call(filterWrap.querySelectorAll('select[data-dev]'), function (select) {
+        on(select, 'change', function () {
+          state.devFilters[select.getAttribute('data-dev')] = select.value;
           renderDevelopments();
         });
       });

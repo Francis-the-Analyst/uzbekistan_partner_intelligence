@@ -2,6 +2,43 @@
 
 Status: written before implementation, per `promptWEBnewdesgin.MD`. Updated as decisions were locked in during the build (this is a single overnight session, not a multi-day team; see `PROJECT_STATE.md` at the project root for the honest done/pending split).
 
+## 0. September 2026 visual alignment â€” approved light direction
+
+The product keeps the existing static architecture, datasets, scoring, filters,
+EN/RU dictionary, CSV export and accessible drawer. The visible experience is
+aligned with the approved Kazakhstan executive direction and the dark proposal
+is removed from navigation.
+
+**Tokens.** Mineral white `#f3f3f0`, paper white `#ffffff`, carbon `#101112`,
+stone grey `#666966`, rule `#d8d8d2`, and Cosentino blue `#2864dc` as the only
+functional signal. Arial/Helvetica is used as a compact grotesque system; scale,
+weight and spacing create the hierarchy rather than decorative type pairing.
+
+**Layout.** The landing is a 58/42 editorial split. The intelligence view uses
+a persistent identity bar, an oversized decision question, four edge-to-edge
+KPIs, a five/six-module navigation band, and a `250px / fluid` work area with
+filters on the left. Content remains left-aligned throughout.
+
+```
++-------------------------------------------------------------+
+| COSENTINO + ownership        UZBEKISTAN · PARTNER INTELLIGENCE|
++-------------------------------------------------------------+
+| WHERE SHOULD THE NEXT CONVERSATION START?     model context  |
++---------------+---------------+---------------+---------------+
+| TOTAL         | HIGH PRIORITY | SHOWROOMS     | CITIES        |
++---------------+---------------+---------------+---------------+
+| 01 MAP | 02 LIST | 03 SHORTLIST | 04 COVERAGE | 05 COMPETITION|
++------------+------------------------------------------------+
+| FILTERS    | ACTIVE INTELLIGENCE VIEW                       |
++------------+------------------------------------------------+
+```
+
+**Principles.** One strong gesture (the oversized executive question), visible
+ownership in every state, no ornamental card grid, showroom prominence through
+blue rules and double rings, and no dark-mode/proposal decision in the main
+journey. The existing dark files remain in the repository for traceability but
+are not linked from the product.
+
 ## 1. Data confirmed (no schema invented)
 
 Read directly from `data_v3/*.json` before writing any code:
