@@ -255,3 +255,27 @@ as-is since it wasn't part of what was asked this round.
 
 **Pushed to `origin/main`** — commit message covers: single-proposal cleanup completion, brand assets,
 `vercel.json`, the hashchange fix, and the screenshot set.
+
+## UPDATE 2026-09-04 — Kazakhstan visual alignment and Projects selectors
+
+The light experience was rebuilt to match the approved Kazakhstan executive system more closely:
+white mineral base, grotesque type, oversized decision question, edge-to-edge KPI band, full-width
+navigation modules, left filter rail, blue functional signal, and black contrast reserved for the
+primary choice/shortlist. The research datasets and all historical files remain intact.
+
+The cover now exposes only the approved light direction and reuses the four verified Cosentino product
+images from the Kazakhstan sibling. A pre-existing runtime integration bug was also fixed: `data.js`
+declared datasets as top-level constants while `app-core.js` read them from `window`, which left the
+application views empty. The exact same arrays are now exposed to the shared runtime without changing
+their content; live rendering confirms 169 Retail actors, 83 Projects actors, and 20 developments.
+
+Per Francisco's follow-up, `Project developments` now has four aligned dropdowns: project, developer,
+source status, and commercial horizon. Actor filters disappear in that view so the 20-development
+inventory becomes the full-width decision surface. A live status selection reduced the table from 20
+to the matching single development, confirming synchronized filtering.
+
+Fresh evidence: Node design-contract tests **6/6 PASS**; browser logic suite **25/25 PASS**; cover,
+Retail, Projects, development selectors, and mobile drawer were exercised at 1440×900 and 390×844;
+Escape closed the drawer and restored `aria-hidden=true`; application pages reported zero JavaScript
+errors or warnings. The test runner's only console noise was a missing favicon request, fixed by adding
+an inline empty favicon. No new push was made in this update.

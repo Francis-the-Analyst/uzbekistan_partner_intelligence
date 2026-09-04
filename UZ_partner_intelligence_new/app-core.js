@@ -724,6 +724,7 @@
   }
 
   function render() {
+    if (document.body) document.body.classList.toggle('developments-active', state.view === 'developments');
     renderHeaderState();
     renderNav();
     renderKPI();

@@ -37,8 +37,16 @@ test('datasets are exposed to the shared application core', async () => {
 
 test('project developments provide aligned project, developer, status and horizon selectors', async () => {
   const js = await read('app-core.js');
+  const css = await read('base.css');
   for (const field of ['project', 'developer', 'status', 'horizon']) {
-    assert.match(js, new RegExp(`data-dev="${field}"`));
+    assert.match(js, new RegExp(`devSelect\\('${field}'`));
   }
   assert.match(js, /function developmentHorizon\(/);
+  assert.match(js, /developments-active/);
+  assert.match(css, /\.developments-active\s+\.filters-bar\s*\{[^}]*display:\s*none/is);
+});
+
+test('the browser test runner does not request a missing favicon', async () => {
+  const html = await read('tests/test-runner.html');
+  assert.match(html, /<link\s+rel="icon"\s+href="data:">/i);
 });

@@ -41,10 +41,13 @@ must not appear in the live pages).
 - Missing evidence always renders literally as "Not evidenced in current research" (EN) /
   "Не подтверждено текущим исследованием" (RU) — nothing is invented, and `physical_exhibition: "Not
   determinable"` is never collapsed into "No".
+- `Project developments` is a distinct 20-record decision surface. Four aligned dropdowns filter by
+  project name, developer, source status, and a derived commercial horizon (execution, near-term,
+  announced/concept, delivered); selecting a row opens the evidence drawer.
 
 ## QA status (see `PROJECT_STATE.md` at the project root for the full, current trail)
 
-Verified in a real browser (2026-09-03, interactive session): `tests/test-runner.html` at 25/25 PASS,
+Verified in a real browser (2026-09-04, interactive session): `tests/test-runner.html` at 25/25 PASS,
 zero console errors across cover, Retail, Projects, Project developments, drawer open/close (mouse,
 Escape), EN/RU toggle, and the mobile filters panel — at all four required breakpoints (1440×900,
 1280×800, 768×1024, 390×844). Reference screenshots for each are in `assets/` (`uzbekistan-*-desktop.png`,
