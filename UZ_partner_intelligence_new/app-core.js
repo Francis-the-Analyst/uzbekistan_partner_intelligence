@@ -921,6 +921,24 @@
 
   /* ---------- Positioning map ---------- */
 
+  function mapShapeFor(typology) {
+    var value = String(typology || '').toLowerCase();
+    if (/hybrid/.test(value)) return 'circle';
+    if (/kitchen|bathroom|showroom/.test(value)) return 'square';
+    if (/interior|architecture|designer/.test(value)) return 'triangle';
+    if (/contractor|installer|facade/.test(value)) return 'diamond';
+    if (/developer/.test(value)) return 'hexagon';
+    return 'circle';
+  }
+
+  function mapMarkerSvg(shape, radius) {
+    if (shape === 'square') return '<rect x="-' + radius + '" y="-' + radius + '" width="' + (radius * 2) + '" height="' + (radius * 2) + '" rx="2" class="map-dot" />';
+    if (shape === 'triangle') return '<path d="M 0 -' + (radius + 1) + ' L ' + (radius + 1) + ' ' + radius + ' L -' + (radius + 1) + ' ' + radius + ' Z" class="map-dot" />';
+    if (shape === 'diamond') return '<path d="M 0 -' + (radius + 1) + ' L ' + (radius + 1) + ' 0 L 0 ' + (radius + 1) + ' L -' + (radius + 1) + ' 0 Z" class="map-dot" />';
+    if (shape === 'hexagon') return '<path d="M -' + radius + ' -' + (radius / 2) + ' L 0 -' + radius + ' L ' + radius + ' -' + (radius / 2) + ' L ' + radius + ' ' + (radius / 2) + ' L 0 ' + radius + ' L -' + radius + ' ' + (radius / 2) + ' Z" class="map-dot" />';
+    return '<circle r="' + radius + '" class="map-dot" />';
+  }
+
   function renderMap(recs) {
     var wrap = byId('map-svg-wrap');
     if (!wrap) return;
@@ -935,15 +953,24 @@
     }
     var width = Math.max(320, wrap.clientWidth || 800);
     var narrow = width < 640;
-    var height = narrow ? 420 : 480;
+    var height = narrow ? 500 : 540;
     var minDist = narrow ? MIN_DIST_NARROW : MIN_DIST_DESKTOP;
-    var pts = layoutPoints(recs, state.channel, state.lang, { width: width, height: height, minDist: minDist });
+    var margin = narrow ? 54 : 64;
+    var pts = layoutPoints(recs, state.channel, state.lang, { width: width, height: height, margin: margin, minDist: minDist });
+    var x0 = margin, x1 = width - margin, y0 = margin, y1 = height - 58, splitX = x0 + (x1 - x0) / 2, splitY = y0 + (y1 - y0) / 2;
 
     var svg = '<svg viewBox="0 0 ' + width + ' ' + height + '" width="100%" height="' + height + '" role="img" aria-label="' + esc(t(state.lang, 'nav_map')) + '">';
+    svg += '<rect x="' + x0 + '" y="' + y0 + '" width="' + (splitX - x0) + '" height="' + (splitY - y0) + '" class="map-zone map-zone-develop" />';
+    svg += '<rect x="' + splitX + '" y="' + y0 + '" width="' + (x1 - splitX) + '" height="' + (splitY - y0) + '" class="map-zone map-zone-priority" />';
+    svg += '<rect x="' + x0 + '" y="' + splitY + '" width="' + (splitX - x0) + '" height="' + (y1 - splitY) + '" class="map-zone map-zone-monitor" />';
+    svg += '<rect x="' + splitX + '" y="' + splitY + '" width="' + (x1 - splitX) + '" height="' + (y1 - splitY) + '" class="map-zone map-zone-qualify" />';
     for (var gy = 0; gy <= 4; gy++) {
-      var yy = 24 + (gy / 4) * (height - 48);
-      svg += '<line x1="24" y1="' + yy + '" x2="' + (width - 24) + '" y2="' + yy + '" class="map-gridline" />';
+      var yy = y0 + (gy / 4) * (y1 - y0);
+      svg += '<line x1="' + x0 + '" y1="' + yy + '" x2="' + x1 + '" y2="' + yy + '" class="map-gridline" />';
     }
+    svg += '<line x1="' + splitX + '" y1="' + y0 + '" x2="' + splitX + '" y2="' + y1 + '" class="map-splitline" /><line x1="' + x0 + '" y1="' + splitY + '" x2="' + x1 + '" y2="' + splitY + '" class="map-splitline" />';
+    svg += '<text x="' + (x0 + 10) + '" y="' + (y0 + 17) + '" class="map-zone-label" text-anchor="start">DEVELOP — GROW WITH THEM</text><text x="' + (x1 - 10) + '" y="' + (y0 + 17) + '" class="map-zone-label" text-anchor="end">PRIORITY — ACT NOW</text><text x="' + (x0 + 10) + '" y="' + (y1 - 10) + '" class="map-zone-label" text-anchor="start">MONITOR — LOWER EVIDENCE</text><text x="' + (x1 - 10) + '" y="' + (y1 - 10) + '" class="map-zone-label" text-anchor="end">QUALIFY — VERIFY</text>';
+    svg += '<text x="' + (x0 - 38) + '" y="' + ((y0 + y1) / 2) + '" class="map-axis-title" text-anchor="middle" transform="rotate(-90 ' + (x0 - 38) + ' ' + ((y0 + y1) / 2) + ')">PROCESSING, PURCHASING &amp; OPERATIONAL READINESS</text><text x="' + ((x0 + x1) / 2) + '" y="' + (height - 13) + '" class="map-axis-title" text-anchor="middle">COMMERCIAL REACH &amp; SHOWROOM NETWORK →</text><text x="' + x0 + '" y="' + (height - 33) + '" class="map-axis-end" text-anchor="start">Limited reach</text><text x="' + x1 + '" y="' + (height - 33) + '" class="map-axis-end" text-anchor="end">Broad reach</text><text x="' + (x0 - 10) + '" y="' + (y0 + 4) + '" class="map-axis-end" text-anchor="end">100</text><text x="' + (x0 - 10) + '" y="' + (y1 + 4) + '" class="map-axis-end" text-anchor="end">0</text>';
     // Render the selected point last so it paints on top (SVG has no z-index; document order decides stacking).
     var drawOrder = pts.slice().sort(function (a, b) {
       var aSel = a.id === state.selectedId ? 1 : 0, bSel = b.id === state.selectedId ? 1 : 0;
@@ -958,7 +985,7 @@
       svg += '<g class="' + cls + '" tabindex="0" role="button" aria-label="' + esc(label) + '" data-id="' + esc(p.id) + '" transform="translate(' + p.x.toFixed(1) + ',' + p.y.toFixed(1) + ')">';
       svg += '<circle r="14" class="map-hit" />';
       if (doubleRing) svg += '<circle r="' + (r + 4) + '" class="map-ring" />';
-      svg += '<circle r="' + r + '" class="map-dot" />';
+      svg += mapMarkerSvg(mapShapeFor(p.rec.typology), r);
       svg += '<title>' + esc(label) + '</title>';
       svg += '</g>';
     });
